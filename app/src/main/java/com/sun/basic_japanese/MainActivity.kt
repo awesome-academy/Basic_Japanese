@@ -2,7 +2,6 @@ package com.sun.basic_japanese
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.NavigationManager
 import com.sun.basic_japanese.home.HomeFragment

@@ -33,26 +33,35 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setView()
     }
 
     private fun setView() {
+        setBasicView()
+        setKanjiView()
+        setTestView()
+    }
+
+    private fun setBasicView() {
         alphabet?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.ic_sort_by_alpha_black_24dp, null
             )
         )
-        alphabet?.label?.text = resources.getText(R.string.bang_chu_cai)
+        alphabet?.label?.text = resources.getText(R.string.alphabet)
         audio?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.ic_headset_black_24dp, null
             )
         )
-        audio?.label?.text = resources.getText(R.string.hoc_tieng_nhat_nkh)
+        audio?.label?.text = resources.getText(R.string.audio_learning)
+    }
+
+    private fun setKanjiView() {
         kanjiBasic?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
@@ -66,21 +75,24 @@ class HomeFragment : Fragment() {
                 R.drawable.ic_mode_edit_black_24dp, null
             )
         )
-        kanjiWriting?.label?.text = resources.getText(R.string.tap_viet_kanji)
+        kanjiWriting?.label?.text = resources.getText(R.string.kanji_writing)
+    }
+
+    private fun setTestView() {
         test?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.ic_school_black_24dp, null
             )
         )
-        test?.label?.text = resources.getText(R.string.thi_jlpt)
+        test?.label?.text = resources.getText(R.string.jlpt_test)
         translate?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.ic_translate_black_24dp, null
             )
         )
-        translate?.label?.text = resources.getText(R.string.dich_tieng_nhat)
+        translate?.label?.text = resources.getText(R.string.translate)
     }
 
     interface OnHomeFragmentInteractionListener : FragmentInteractionListener

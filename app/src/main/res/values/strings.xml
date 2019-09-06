@@ -3,13 +3,13 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="bang_chu_cai">Bảng chữ cái</string>
-    <string name="hoc_tieng_nhat_nkh">Học tiếng nhật NHK</string>
+    <string name="alphabet">Bảng chữ cái</string>
+    <string name="audio_learning">Học tiếng nhật NHK</string>
     <string name="kanji">Kanji</string>
-    <string name="tap_viet_kanji">Tập viết Kanji</string>
-    <string name="thi_jlpt">Thi JLPT</string>
-    <string name="dich_tieng_nhat">Dịch tiếng nhật</string>
-    <string name="khoa_hoc_nhap_mon">Khóa học nhập môn</string>
-    <string name="khoa_hoc_kanji">Khóa học Kanji</string>
-    <string name="tro_giup">Trợ giúp</string>
+    <string name="kanji_writing">Tập viết Kanji</string>
+    <string name="jlpt_test">Thi JLPT</string>
+    <string name="translate">Dịch tiếng nhật</string>
+    <string name="basic_courses">Khóa học nhập môn</string>
+    <string name="kanji_courses">Khóa học Kanji</string>
+    <string name="help">Trợ giúp</string>
 </resources>

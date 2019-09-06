@@ -13,7 +13,7 @@
         android:layout_marginStart="@dimen/dp_32"
         android:layout_marginTop="@dimen/dp_12"
         android:gravity="bottom"
-        android:text="@string/khoa_hoc_nhap_mon" />
+        android:text="@string/basic_courses" />
 
     <LinearLayout
         android:id="@+id/basic"
@@ -39,7 +39,7 @@
         android:layout_height="@dimen/dp_32"
         android:layout_marginStart="@dimen/dp_32"
         android:gravity="bottom"
-        android:text="@string/khoa_hoc_kanji" />
+        android:text="@string/kanji_courses" />
 
     <LinearLayout
         android:id="@+id/kanji"
@@ -65,7 +65,7 @@
         android:layout_height="@dimen/dp_32"
         android:layout_marginStart="@dimen/dp_32"
         android:gravity="bottom"
-        android:text="@string/tro_giup" />
+        android:text="@string/help" />
 
     <LinearLayout
         android:id="@+id/help"
