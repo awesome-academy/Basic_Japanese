@@ -6,5 +6,4 @@ interface FragmentInteractionListener {
     fun setToolbarVisibility(show: Boolean)
 
     fun setCurrentFragment(fragment: BaseFragment)
-
 }

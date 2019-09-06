@@ -9,8 +9,7 @@ class NavigationManager(
     private val container: Int
 ) {
 
-    val isRootFragmentVisible: Boolean
-        get() = fragmentManager.backStackEntryCount <= STACK_ENTRY_COUNT_LIMIT
+    val isRootFragmentVisible: Boolean = fragmentManager.backStackEntryCount <= STACK_ENTRY_COUNT_LIMIT
 
     private var navigationListener: (() -> Unit)? = null
 
