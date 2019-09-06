@@ -37,7 +37,7 @@ open class BaseFragment : Fragment() {
 
     fun getNavigationManager(): NavigationManager = navigationManagerInner
 
-    open fun onBackPressed(): Boolean = false
+    open fun onBackPressed() = false
 
     companion object {
         private const val ERROR_IMPLEMENT_HAS_NAVIGATION_MANAGER =

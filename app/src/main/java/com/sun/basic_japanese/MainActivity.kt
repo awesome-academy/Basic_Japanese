@@ -2,6 +2,7 @@ package com.sun.basic_japanese
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.NavigationManager
 import com.sun.basic_japanese.home.HomeFragment
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity(), HomeFragment.OnHomeFragmentInteraction
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {
-            navigationManager.openAsRoot(HomeFragment())
+            navigationManager.openAsRoot(HomeFragment.newInstance())
         }
     }
 

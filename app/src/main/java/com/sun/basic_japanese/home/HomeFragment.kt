@@ -87,5 +87,6 @@ class HomeFragment : Fragment() {
 
     companion object {
         private const val LISTENER_NULL_EXCEPTION = "must implement OnHomeFragmentInteractionListener"
+        fun newInstance() = HomeFragment()
     }
 }
