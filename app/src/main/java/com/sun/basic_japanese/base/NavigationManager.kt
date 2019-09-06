@@ -10,7 +10,7 @@ class NavigationManager(
 ) {
 
     val isRootFragmentVisible: Boolean
-        get() = fragmentManager.backStackEntryCount <= 1
+        get() = fragmentManager.backStackEntryCount <= STACK_ENTRY_COUNT_LIMIT
 
     private var navigationListener: (() -> Unit)? = null
 
@@ -60,5 +60,9 @@ class NavigationManager(
 
     private fun popEveryFragment() {
         fragmentManager.popBackStackImmediate("ROOT", FragmentManager.POP_BACK_STACK_INCLUSIVE)
+    }
+
+    companion object {
+        private const val STACK_ENTRY_COUNT_LIMIT = 1
     }
 }
