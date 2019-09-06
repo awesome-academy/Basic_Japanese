@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".home.HomeFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_12"
+        android:gravity="bottom"
+        android:text="@string/khoa_hoc_nhap_mon" />
+
+    <LinearLayout
+        android:id="@+id/basic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/fragment_background"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/alphabet"
+            layout="@layout/one_line_element" />
+
+        <include layout="@layout/line" />
+
+        <include
+            android:id="@+id/audio"
+            layout="@layout/one_line_element" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_32"
+        android:gravity="bottom"
+        android:text="@string/khoa_hoc_kanji" />
+
+    <LinearLayout
+        android:id="@+id/kanji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/fragment_background"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/kanjiBasic"
+            layout="@layout/one_line_element" />
+
+        <include layout="@layout/line" />
+
+        <include
+            android:id="@+id/kanjiWriting"
+            layout="@layout/one_line_element" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_32"
+        android:gravity="bottom"
+        android:text="@string/tro_giup" />
+
+    <LinearLayout
+        android:id="@+id/help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/fragment_background"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/test"
+            layout="@layout/one_line_element" />
+
+        <include layout="@layout/line" />
+
+        <include
+            android:id="@+id/translate"
+            layout="@layout/one_line_element" />
+    </LinearLayout>
+
+</LinearLayout>

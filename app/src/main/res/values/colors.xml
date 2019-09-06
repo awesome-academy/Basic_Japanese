@@ -3,4 +3,11 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorSubTitle">#888888</color>
+    <color name="colorBorder">#D9D9D9</color>
+    <color name="colorFragment">#F2F2F2</color>
+    <color name="colorBackground">#FCFCFC</color>
+    <color name="colorLine">#E0E0E0</color>
+    <color name="colorTextPrimary">#000000</color>
 </resources>
