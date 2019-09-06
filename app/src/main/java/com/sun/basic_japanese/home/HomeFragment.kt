@@ -39,54 +39,56 @@ class HomeFragment : Fragment() {
     }
 
     private fun setView() {
-        alphabet.icon.setImageDrawable(
+        alphabet?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.ic_sort_by_alpha_black_24dp, null
             )
         )
-        alphabet.label.text = resources.getText(R.string.bang_chu_cai)
-        audio.icon.setImageDrawable(
+        alphabet?.label?.text = resources.getText(R.string.bang_chu_cai)
+        audio?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.ic_headset_black_24dp, null
             )
         )
-        audio.label.text = resources.getText(R.string.hoc_tieng_nhat_nkh)
-        kanjiBasic.icon.setImageDrawable(
+        audio?.label?.text = resources.getText(R.string.hoc_tieng_nhat_nkh)
+        kanjiBasic?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.ic_text_fields_black_24dp, null
             )
         )
-        kanjiBasic.label.text = resources.getText(R.string.kanji)
-        kanjiWriting.icon.setImageDrawable(
+        kanjiBasic?.label?.text = resources.getText(R.string.kanji)
+        kanjiWriting?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.ic_mode_edit_black_24dp, null
             )
         )
-        kanjiWriting.label.text = resources.getText(R.string.tap_viet_kanji)
-        test.icon.setImageDrawable(
+        kanjiWriting?.label?.text = resources.getText(R.string.tap_viet_kanji)
+        test?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.ic_school_black_24dp, null
             )
         )
-        test.label.text = resources.getText(R.string.thi_jlpt)
-        translate.icon.setImageDrawable(
+        test?.label?.text = resources.getText(R.string.thi_jlpt)
+        translate?.icon?.setImageDrawable(
             ResourcesCompat.getDrawable(
                 resources,
                 R.drawable.ic_translate_black_24dp, null
             )
         )
-        translate.label.text = resources.getText(R.string.dich_tieng_nhat)
+        translate?.label?.text = resources.getText(R.string.dich_tieng_nhat)
     }
 
     interface OnHomeFragmentInteractionListener : FragmentInteractionListener
 
     companion object {
         private const val LISTENER_NULL_EXCEPTION = "must implement OnHomeFragmentInteractionListener"
+
+        @JvmStatic
         fun newInstance() = HomeFragment()
     }
 }

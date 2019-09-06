@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity(), HomeFragment.OnHomeFragmentInteraction
     }
 
     override fun setToolbarTitle(title: String) {
-        collapsingToolbar.title = title
+        collapsingToolbar?.title = title
     }
 
     override fun setToolbarVisibility(show: Boolean) {
