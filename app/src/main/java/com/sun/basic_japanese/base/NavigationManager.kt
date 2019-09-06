@@ -47,8 +47,9 @@ class NavigationManager(
         }
 
         fragmentTransaction.setAnimations()
-        if (addToBackStack)
-            fragmentTransaction.addToBackStack(fragment.toString())
+
+        if (addToBackStack) fragmentTransaction.addToBackStack(fragment.toString())
+        
         fragmentTransaction.commit()
     }
 

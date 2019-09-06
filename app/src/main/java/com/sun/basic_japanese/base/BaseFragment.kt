@@ -13,17 +13,19 @@ open class BaseFragment : Fragment() {
         super.onAttach(context)
 
         navigationManagerInner =
-            if (parentFragment != null && parentFragment is HasNavigationManager)
+            if (parentFragment != null && parentFragment is HasNavigationManager) {
                 (parentFragment as HasNavigationManager).provideNavigationManager()
-            else if (context is HasNavigationManager)
+            } else if (context is HasNavigationManager) {
                 (context as HasNavigationManager).provideNavigationManager()
-            else
+            } else {
                 throw RuntimeException(ERROR_IMPLEMENT_HAS_NAVIGATION_MANAGER)
+            }
 
-        if (context is Activity)
+        if (context is Activity) {
             fragmentInteractionInner = context as FragmentInteractionListener
-        else
+        } else {
             throw RuntimeException(ERROR_IMPLEMENT_FRAGMENT_INTERACTION_LISTENER)
+        }
     }
 
     override fun onStart() {
@@ -43,5 +45,4 @@ open class BaseFragment : Fragment() {
         private const val ERROR_IMPLEMENT_FRAGMENT_INTERACTION_LISTENER =
             "Activity host must implement FragmentInteractionListener"
     }
-
 }
