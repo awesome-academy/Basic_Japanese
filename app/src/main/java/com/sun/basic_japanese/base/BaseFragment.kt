@@ -28,7 +28,9 @@ open class BaseFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        fragmentInteractionInner.setCurrentFragment(this)
+        if(::fragmentInteractionInner.isInitialized) {
+            fragmentInteractionInner.setCurrentFragment(this)
+        }
     }
 
     fun getNavigationManager(): NavigationManager = navigationManagerInner
