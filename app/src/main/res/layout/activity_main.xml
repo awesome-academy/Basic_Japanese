@@ -12,7 +12,7 @@
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_240"
-        android:background="@color/colorTransparent"
+        android:background="@color/color_transparent"
         android:elevation="@dimen/dp_0"
         android:stateListAnimator="@null"
         app:expanded="true">
@@ -43,7 +43,7 @@
                 android:id="@+id/toolBar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_0"
-                android:background="@color/colorTransparent"
+                android:background="@color/color_transparent"
                 android:elevation="@dimen/dp_0"
                 android:theme="@style/AppTheme"
                 app:layout_collapseMode="pin" />

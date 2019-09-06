@@ -27,7 +27,8 @@ class HomeFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
@@ -45,54 +46,66 @@ class HomeFragment : Fragment() {
     }
 
     private fun setBasicView() {
-        alphabet?.icon?.setImageDrawable(
-            ResourcesCompat.getDrawable(
-                resources,
-                R.drawable.ic_sort_by_alpha_black_24dp, null
+        alphabet?.let {
+            it.imageIcon?.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_sort_by_alpha_black_24dp, null
+                )
             )
-        )
-        alphabet?.label?.text = resources.getText(R.string.alphabet)
-        audio?.icon?.setImageDrawable(
-            ResourcesCompat.getDrawable(
-                resources,
-                R.drawable.ic_headset_black_24dp, null
+            it.textLabel?.text = resources.getText(R.string.alphabet)
+        }
+        audio?.let {
+            it.imageIcon?.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_headset_black_24dp, null
+                )
             )
-        )
-        audio?.label?.text = resources.getText(R.string.audio_learning)
+            it.textLabel?.text = resources.getText(R.string.audio_learning)
+        }
     }
 
     private fun setKanjiView() {
-        kanjiBasic?.icon?.setImageDrawable(
-            ResourcesCompat.getDrawable(
-                resources,
-                R.drawable.ic_text_fields_black_24dp, null
+        kanjiBasic?.let {
+            it.imageIcon?.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_text_fields_black_24dp, null
+                )
             )
-        )
-        kanjiBasic?.label?.text = resources.getText(R.string.kanji)
-        kanjiWriting?.icon?.setImageDrawable(
-            ResourcesCompat.getDrawable(
-                resources,
-                R.drawable.ic_mode_edit_black_24dp, null
+            it.textLabel?.text = resources.getText(R.string.kanji)
+        }
+        kanjiWriting?.let {
+            it.imageIcon?.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_mode_edit_black_24dp, null
+                )
             )
-        )
-        kanjiWriting?.label?.text = resources.getText(R.string.kanji_writing)
+            it.textLabel?.text = resources.getText(R.string.kanji_writing)
+        }
     }
 
     private fun setTestView() {
-        test?.icon?.setImageDrawable(
-            ResourcesCompat.getDrawable(
-                resources,
-                R.drawable.ic_school_black_24dp, null
+        test?.let {
+            it.imageIcon?.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_school_black_24dp, null
+                )
             )
-        )
-        test?.label?.text = resources.getText(R.string.jlpt_test)
-        translate?.icon?.setImageDrawable(
-            ResourcesCompat.getDrawable(
-                resources,
-                R.drawable.ic_translate_black_24dp, null
+            it.textLabel?.text = resources.getText(R.string.jlpt_test)
+        }
+        translate?.let {
+            it.imageIcon?.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_translate_black_24dp, null
+                )
             )
-        )
-        translate?.label?.text = resources.getText(R.string.translate)
+            it.textLabel?.text = resources.getText(R.string.translate)
+        }
     }
 
     interface OnHomeFragmentInteractionListener : FragmentInteractionListener

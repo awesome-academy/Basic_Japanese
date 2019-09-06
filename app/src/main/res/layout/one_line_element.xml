@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/icon"
+        android:id="@+id/imageIcon"
         android:layout_width="@dimen/dp_24"
         android:layout_height="@dimen/dp_24"
         android:layout_marginStart="@dimen/dp_24"
@@ -18,13 +18,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/label"
+        android:id="@+id/textLabel"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dp_54"
         android:layout_marginStart="@dimen/dp_12"
         android:gravity="center_vertical"
-        android:textColor="@color/colorTextPrimary"
+        android:textColor="@color/color_text_primary"
         android:textSize="@dimen/sp_18"
-        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintStart_toEndOf="@id/imageIcon"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

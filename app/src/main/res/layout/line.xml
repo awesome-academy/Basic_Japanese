@@ -4,4 +4,4 @@
     android:layout_width="@dimen/dp_348"
     android:layout_height="@dimen/px_2"
     android:layout_gravity="end"
-    android:background="@color/colorLine" />
+    android:background="@color/color_line" />

@@ -11,13 +11,12 @@ class MainActivity : AppCompatActivity(), HomeFragment.OnHomeFragmentInteraction
 
     private lateinit var navigationManager: NavigationManager
     private lateinit var currentFragment: BaseFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         navigationManager = NavigationManager(supportFragmentManager, R.id.mainContainer)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        if (savedInstanceState == null) {
-            navigationManager.openAsRoot(HomeFragment.newInstance())
-        }
+        savedInstanceState ?: navigationManager.openAsRoot(HomeFragment.newInstance())
     }
 
     override fun setToolbarTitle(title: String) {
