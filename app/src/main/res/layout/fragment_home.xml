@@ -13,10 +13,10 @@
         android:layout_marginStart="@dimen/dp_32"
         android:layout_marginTop="@dimen/dp_12"
         android:gravity="bottom"
-        android:text="@string/basic_courses" />
+        android:text="@string/title_basic_courses" />
 
     <LinearLayout
-        android:id="@+id/basic"
+        android:id="@+id/linearBasic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_4"
@@ -24,13 +24,13 @@
         android:orientation="vertical">
 
         <include
-            android:id="@+id/alphabet"
+            android:id="@+id/layoutAlphabet"
             layout="@layout/one_line_element" />
 
         <include layout="@layout/line" />
 
         <include
-            android:id="@+id/audio"
+            android:id="@+id/layoutAudio"
             layout="@layout/one_line_element" />
     </LinearLayout>
 
@@ -39,10 +39,10 @@
         android:layout_height="@dimen/dp_32"
         android:layout_marginStart="@dimen/dp_32"
         android:gravity="bottom"
-        android:text="@string/kanji_courses" />
+        android:text="@string/title_kanji_courses" />
 
     <LinearLayout
-        android:id="@+id/kanji"
+        android:id="@+id/linearKanji"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_4"
@@ -50,13 +50,13 @@
         android:orientation="vertical">
 
         <include
-            android:id="@+id/kanjiBasic"
+            android:id="@+id/layoutKanjiBasic"
             layout="@layout/one_line_element" />
 
         <include layout="@layout/line" />
 
         <include
-            android:id="@+id/kanjiWriting"
+            android:id="@+id/layoutKanjiWriting"
             layout="@layout/one_line_element" />
     </LinearLayout>
 
@@ -65,10 +65,10 @@
         android:layout_height="@dimen/dp_32"
         android:layout_marginStart="@dimen/dp_32"
         android:gravity="bottom"
-        android:text="@string/help" />
+        android:text="@string/title_help" />
 
     <LinearLayout
-        android:id="@+id/help"
+        android:id="@+id/linearHelp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_4"
@@ -76,13 +76,13 @@
         android:orientation="vertical">
 
         <include
-            android:id="@+id/test"
+            android:id="@+id/layoutTest"
             layout="@layout/one_line_element" />
 
         <include layout="@layout/line" />
 
         <include
-            android:id="@+id/translate"
+            android:id="@+id/layoutTranslate"
             layout="@layout/one_line_element" />
     </LinearLayout>
 

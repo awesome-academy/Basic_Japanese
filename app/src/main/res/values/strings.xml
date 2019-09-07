@@ -2,14 +2,13 @@
     <string name="app_name">Basic Japanese</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="alphabet">Bảng chữ cái</string>
-    <string name="audio_learning">Học tiếng nhật NHK</string>
-    <string name="kanji">Kanji</string>
-    <string name="kanji_writing">Tập viết Kanji</string>
-    <string name="jlpt_test">Thi JLPT</string>
-    <string name="translate">Dịch tiếng nhật</string>
-    <string name="basic_courses">Khóa học nhập môn</string>
-    <string name="kanji_courses">Khóa học Kanji</string>
-    <string name="help">Trợ giúp</string>
+    <string name="title_alphabet">Bảng chữ cái</string>
+    <string name="title_audio_learning">Học tiếng nhật NHK</string>
+    <string name="title_kanji">Kanji</string>
+    <string name="title_kanji_writing">Tập viết Kanji</string>
+    <string name="title_jlpt_test">Thi JLPT</string>
+    <string name="title_translate">Dịch tiếng nhật</string>
+    <string name="title_basic_courses">Khóa học nhập môn</string>
+    <string name="title_kanji_courses">Khóa học Kanji</string>
+    <string name="title_help">Trợ giúp</string>
 </resources>

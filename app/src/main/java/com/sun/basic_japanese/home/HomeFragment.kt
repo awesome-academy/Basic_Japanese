@@ -46,65 +46,65 @@ class HomeFragment : Fragment() {
     }
 
     private fun setBasicView() {
-        alphabet?.let {
+        layoutAlphabet?.let {
             it.imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_sort_by_alpha_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.alphabet)
+            it.textLabel?.text = resources.getText(R.string.title_alphabet)
         }
-        audio?.let {
+        layoutAudio?.let {
             it.imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_headset_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.audio_learning)
+            it.textLabel?.text = resources.getText(R.string.title_audio_learning)
         }
     }
 
     private fun setKanjiView() {
-        kanjiBasic?.let {
+        layoutKanjiBasic?.let {
             it.imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_text_fields_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.kanji)
+            it.textLabel?.text = resources.getText(R.string.title_kanji)
         }
-        kanjiWriting?.let {
+        layoutKanjiWriting?.let {
             it.imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_mode_edit_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.kanji_writing)
+            it.textLabel?.text = resources.getText(R.string.title_kanji_writing)
         }
     }
 
     private fun setTestView() {
-        test?.let {
+        layoutTest?.let {
             it.imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_school_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.jlpt_test)
+            it.textLabel?.text = resources.getText(R.string.title_jlpt_test)
         }
-        translate?.let {
+        layoutTranslate?.let {
             it.imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_translate_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.translate)
+            it.textLabel?.text = resources.getText(R.string.title_translate)
         }
     }
 
