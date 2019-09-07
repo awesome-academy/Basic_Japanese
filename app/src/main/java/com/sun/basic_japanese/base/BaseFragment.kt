@@ -12,8 +12,20 @@ open class BaseFragment : Fragment() {
     override fun onAttach(context: Context?) {
         super.onAttach(context)
 
-        initNavigationManager()
-        initFragmentInteractionListener()
+        navigationManagerInner =
+            if (parentFragment != null && parentFragment is HasNavigationManager) {
+                (parentFragment as HasNavigationManager).provideNavigationManager()
+            } else if (context is HasNavigationManager) {
+                (context as HasNavigationManager).provideNavigationManager()
+            } else {
+                throw RuntimeException(ERROR_IMPLEMENT_HAS_NAVIGATION_MANAGER)
+            }
+
+        if (context is Activity) {
+            fragmentInteractionInner = context as FragmentInteractionListener
+        } else {
+            throw RuntimeException(ERROR_IMPLEMENT_FRAGMENT_INTERACTION_LISTENER)
+        }
     }
 
     override fun onStart() {
@@ -25,26 +37,7 @@ open class BaseFragment : Fragment() {
 
     fun getNavigationManager(): NavigationManager = navigationManagerInner
 
-    open fun onBackPressed(): Boolean = false
-
-    private fun initNavigationManager() {
-        navigationManagerInner =
-            if (parentFragment != null && parentFragment is HasNavigationManager) {
-                (parentFragment as HasNavigationManager).provideNavigationManager()
-            } else if (context is HasNavigationManager) {
-                (context as HasNavigationManager).provideNavigationManager()
-            } else {
-                throw RuntimeException(ERROR_IMPLEMENT_HAS_NAVIGATION_MANAGER)
-            }
-    }
-
-    private fun initFragmentInteractionListener() {
-        if (context is Activity) {
-            fragmentInteractionInner = context as FragmentInteractionListener
-        } else {
-            throw RuntimeException(ERROR_IMPLEMENT_FRAGMENT_INTERACTION_LISTENER)
-        }
-    }
+    open fun onBackPressed() = false
 
     companion object {
         private const val ERROR_IMPLEMENT_HAS_NAVIGATION_MANAGER =

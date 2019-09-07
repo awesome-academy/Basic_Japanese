@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".home.HomeFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_32"
+        android:layout_marginTop="@dimen/dp_12"
+        android:gravity="bottom"
+        android:text="@string/title_basic_courses" />
+
+    <LinearLayout
+        android:id="@+id/linearBasic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/fragment_background"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layoutAlphabet"
+            layout="@layout/one_line_element" />
+
+        <include layout="@layout/line" />
+
+        <include
+            android:id="@+id/layoutAudio"
+            layout="@layout/one_line_element" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_32"
+        android:gravity="bottom"
+        android:text="@string/title_kanji_courses" />
+
+    <LinearLayout
+        android:id="@+id/linearKanji"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/fragment_background"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layoutKanjiBasic"
+            layout="@layout/one_line_element" />
+
+        <include layout="@layout/line" />
+
+        <include
+            android:id="@+id/layoutKanjiWriting"
+            layout="@layout/one_line_element" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_32"
+        android:gravity="bottom"
+        android:text="@string/title_help" />
+
+    <LinearLayout
+        android:id="@+id/linearHelp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/fragment_background"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/layoutTest"
+            layout="@layout/one_line_element" />
+
+        <include layout="@layout/line" />
+
+        <include
+            android:id="@+id/layoutTranslate"
+            layout="@layout/one_line_element" />
+    </LinearLayout>
+
+</LinearLayout>
