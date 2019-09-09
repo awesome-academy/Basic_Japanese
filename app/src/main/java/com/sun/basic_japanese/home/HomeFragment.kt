@@ -111,7 +111,8 @@ class HomeFragment : Fragment() {
     interface OnHomeFragmentInteractionListener : FragmentInteractionListener
 
     companion object {
-        private const val LISTENER_NULL_EXCEPTION = "must implement OnHomeFragmentInteractionListener"
+        private const val LISTENER_NULL_EXCEPTION =
+            "must implement OnHomeFragmentInteractionListener"
 
         @JvmStatic
         fun newInstance() = HomeFragment()
