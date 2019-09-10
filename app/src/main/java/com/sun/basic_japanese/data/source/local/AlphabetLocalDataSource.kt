@@ -1,6 +1,5 @@
 package com.sun.basic_japanese.data.source.local
 
-import android.content.Context
 import com.sun.basic_japanese.data.model.Alphabet
 import com.sun.basic_japanese.data.model.AlphabetsResponse
 import com.sun.basic_japanese.data.source.AlphabetDataSource
@@ -18,11 +17,7 @@ class AlphabetLocalDataSource(private val database: AppDatabase) : AlphabetDataS
 
     override fun getNotRememberAlphabets(callback: OnDataLoadedCallback<AlphabetsResponse>) {
         LoadDataAsync(callback).execute(
-            AlphabetsResponse(
-                database.getAlphabetsByRemember(
-                    NOT_REMEMBER
-                )
-            )
+            AlphabetsResponse(database.getAlphabetsByRemember(NOT_REMEMBER))
         )
     }
 
@@ -33,15 +28,15 @@ class AlphabetLocalDataSource(private val database: AppDatabase) : AlphabetDataS
         LoadDataAsync(callback).execute(database.updateRememberAlphabet(alphabet))
     }
 
-
     companion object {
         private const val REMEMBER = 1
         private const val NOT_REMEMBER = 0
 
+        @Volatile
         private var instance: AlphabetLocalDataSource? = null
 
-        fun getInstance(database: AppDatabase): AlphabetLocalDataSource =
+        fun getInstance(database: AppDatabase) = instance ?: synchronized(this) {
             instance ?: AlphabetLocalDataSource(database).also { instance = it }
-
+        }
     }
 }

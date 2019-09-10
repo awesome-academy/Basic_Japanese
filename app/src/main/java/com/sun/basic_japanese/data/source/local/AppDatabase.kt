@@ -3,14 +3,12 @@ package com.sun.basic_japanese.data.source.local
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
-import android.content.SharedPreferences
-import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.sun.basic_japanese.data.model.Alphabet
+import com.sun.basic_japanese.data.model.NHKLesson
 import java.io.File
 import java.io.FileOutputStream
-import java.lang.RuntimeException
 
 class AppDatabase private constructor(
     private val context: Context
@@ -39,9 +37,7 @@ class AppDatabase private constructor(
     fun getAlphabets(): MutableList<Alphabet> {
         val alphabets = mutableListOf<Alphabet>()
         val db = readableDatabase
-        val cursor: Cursor
-
-        cursor = db.query(DATABASE_TABLE_ALPHABET, null, null, null, null, null, null)
+        val cursor = db.query(DATABASE_TABLE_ALPHABET, null, null, null, null, null, null)
 
         if (cursor != null && cursor.moveToFirst()) {
             do {
@@ -58,12 +54,10 @@ class AppDatabase private constructor(
     fun getAlphabetsByRemember(remember: Int): MutableList<Alphabet> {
         val alphabets = mutableListOf<Alphabet>()
         val db = readableDatabase
-        val cursor: Cursor
-
-        cursor = db.query(
+        val cursor = db.query(
             DATABASE_TABLE_ALPHABET,
             null,
-            "$DATABASE_COLUMN_REMEMBER = ?",
+            "${Alphabet.DATABASE_TABLE_ALPHABET_COLUMN_REMEMBER} = ?",
             arrayOf(remember.toString()),
             null,
             null,
@@ -85,15 +79,33 @@ class AppDatabase private constructor(
     @Synchronized
     fun updateRememberAlphabet(alphabet: Alphabet): Boolean {
         val values = ContentValues().apply {
-            put(DATABASE_COLUMN_REMEMBER, alphabet.remember)
+            put(Alphabet.DATABASE_TABLE_ALPHABET_COLUMN_REMEMBER, alphabet.remember)
         }
         val db = readableDatabase
+
         return db.update(
             DATABASE_TABLE_ALPHABET,
             values,
-            "$DATABASE_COLUMN_ID = ?",
+            "${Alphabet.DATABASE_TABLE_ALPHABET_COLUMN_ID} = ?",
             arrayOf(alphabet.id.toString())
         ) > 0
+    }
+
+    fun getNHKLessons(): MutableList<NHKLesson> {
+        val nhkLessons = mutableListOf<NHKLesson>()
+        val db = readableDatabase
+        val cursor = db.query(DATABASE_TABLE_NHK_LESSON, null, null, null, null, null, null)
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                val nhkLesson = NHKLesson(cursor)
+                nhkLessons.add(nhkLesson)
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+        return nhkLessons
     }
 
     private fun installDatabaseFromAssets() {
@@ -146,25 +158,15 @@ class AppDatabase private constructor(
         private const val DATABASE_NAME = "AppDatabase.db"
         private const val DATABASE_VERSION = 1
         private const val ERROR_MESSAGE = "The $DATABASE_NAME database could't be installed"
-
-        const val DATABASE_TABLE_ALPHABET = "Alphabet"
-        const val DATABASE_COLUMN_ID = "id"
-        const val DATABASE_COLUMN_ROMAJI = "romaji"
-        const val DATABASE_COLUMN_HIRAGANA = "hiragana"
-        const val DATABASE_COLUMN_KATAKANA = "katakana"
-        const val DATABASE_COLUMN_AUDIO = "audio"
-        const val DATABASE_COLUMN_GROUPE = "groupe"
-        const val DATABASE_COLUMN_REMEMBER = "remember"
+        private const val DATABASE_TABLE_ALPHABET = "Alphabet"
+        private const val DATABASE_TABLE_NHK_LESSON = "NHKLesson"
 
         @SuppressLint("StaticFieldLeak")
-        private var INSTANCE: AppDatabase? = null
+        @Volatile
+        private var instance: AppDatabase? = null
 
-        fun getInstance(context: Context): AppDatabase {
-            return INSTANCE ?: synchronized(this) {
-                INSTANCE =
-                    AppDatabase(context)
-                INSTANCE!!
-            }
+        fun getInstance(context: Context) = instance ?: synchronized(this) {
+            instance ?: AppDatabase(context).also { instance = it }
         }
     }
 }
