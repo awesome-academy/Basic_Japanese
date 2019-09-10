@@ -1,30 +1,20 @@
 package com.sun.basic_japanese.home
 
-import android.content.Context
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v4.content.res.ResourcesCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sun.basic_japanese.R
+import com.sun.basic_japanese.alphabet.allpages.AlphabetFragment
+import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.FragmentInteractionListener
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.one_line_element.view.*
-import java.lang.RuntimeException
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment() {
 
     private var listener: OnHomeFragmentInteractionListener? = null
-
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        if (context is OnHomeFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException("$context $LISTENER_NULL_EXCEPTION")
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,6 +27,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setView()
+        setEventClick()
+    }
+
+    private fun setEventClick() {
+        layoutAlphabet.setOnClickListener {
+            getNavigationManager().open(AlphabetFragment.newInstance())
+        }
     }
 
     private fun setView() {
@@ -111,9 +108,6 @@ class HomeFragment : Fragment() {
     interface OnHomeFragmentInteractionListener : FragmentInteractionListener
 
     companion object {
-        private const val LISTENER_NULL_EXCEPTION =
-            "must implement OnHomeFragmentInteractionListener"
-
         @JvmStatic
         fun newInstance() = HomeFragment()
     }

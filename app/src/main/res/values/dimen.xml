@@ -13,4 +13,9 @@
     <dimen name="px_1">1px</dimen>
     <dimen name="dp_54">54dp</dimen>
     <dimen name="dp_16">16dp</dimen>
+    <dimen name="sp_32">32sp</dimen>
+    <dimen name="sp_24">24sp</dimen>
+    <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_640">640dp</dimen>
+
 </resources>
