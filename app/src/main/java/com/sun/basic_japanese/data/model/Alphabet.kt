@@ -1,7 +1,6 @@
 package com.sun.basic_japanese.data.model
 
 import android.database.Cursor
-import com.sun.basic_japanese.data.source.local.AppDatabase
 
 data class Alphabet(
     val id: Int,
@@ -13,12 +12,22 @@ data class Alphabet(
     var remember: Int
 ) {
     constructor(cursor: Cursor) : this(
-        cursor.getInt(cursor.getColumnIndex(AppDatabase.DATABASE_COLUMN_ID)),
-        cursor.getString(cursor.getColumnIndex(AppDatabase.DATABASE_COLUMN_ROMAJI)),
-        cursor.getString(cursor.getColumnIndex(AppDatabase.DATABASE_COLUMN_HIRAGANA)),
-        cursor.getString(cursor.getColumnIndex(AppDatabase.DATABASE_COLUMN_KATAKANA)),
-        cursor.getString(cursor.getColumnIndex(AppDatabase.DATABASE_COLUMN_AUDIO)),
-        cursor.getInt(cursor.getColumnIndex(AppDatabase.DATABASE_COLUMN_GROUPE)),
-        cursor.getInt(cursor.getColumnIndex(AppDatabase.DATABASE_COLUMN_REMEMBER))
+        cursor.getInt(cursor.getColumnIndex(DATABASE_TABLE_ALPHABET_COLUMN_ID)),
+        cursor.getString(cursor.getColumnIndex(DATABASE_TABLE_ALPHABET_COLUMN_ROMAJI)),
+        cursor.getString(cursor.getColumnIndex(DATABASE_TABLE_ALPHABET_COLUMN_HIRAGANA)),
+        cursor.getString(cursor.getColumnIndex(DATABASE_TABLE_ALPHABET_COLUMN_KATAKANA)),
+        cursor.getString(cursor.getColumnIndex(DATABASE_TABLE_ALPHABET_COLUMN_AUDIO)),
+        cursor.getInt(cursor.getColumnIndex(DATABASE_TABLE_ALPHABET_COLUMN_GROUPE)),
+        cursor.getInt(cursor.getColumnIndex(DATABASE_TABLE_ALPHABET_COLUMN_REMEMBER))
     )
+
+    companion object {
+        const val DATABASE_TABLE_ALPHABET_COLUMN_ID = "id"
+        const val DATABASE_TABLE_ALPHABET_COLUMN_ROMAJI = "romaji"
+        const val DATABASE_TABLE_ALPHABET_COLUMN_HIRAGANA = "hiragana"
+        const val DATABASE_TABLE_ALPHABET_COLUMN_KATAKANA = "katakana"
+        const val DATABASE_TABLE_ALPHABET_COLUMN_AUDIO = "audio"
+        const val DATABASE_TABLE_ALPHABET_COLUMN_GROUPE = "groupe"
+        const val DATABASE_TABLE_ALPHABET_COLUMN_REMEMBER = "remember"
+    }
 }

@@ -1,11 +1,10 @@
 package com.sun.basic_japanese.data.source
 
-import android.content.Context
 import com.sun.basic_japanese.data.model.Alphabet
 import com.sun.basic_japanese.data.model.AlphabetsResponse
 
 interface AlphabetDataSource {
-    interface Local: AlphabetDataSource {
+    interface Local {
         fun getAllAlphabets(callback: OnDataLoadedCallback<AlphabetsResponse>)
 
         fun getRememberAlphabets(callback: OnDataLoadedCallback<AlphabetsResponse>)
