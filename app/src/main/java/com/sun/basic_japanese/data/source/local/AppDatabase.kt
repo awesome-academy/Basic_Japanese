@@ -83,12 +83,15 @@ class AppDatabase private constructor(
         }
         val db = readableDatabase
 
-        return db.update(
+        val result = db.update(
             DATABASE_TABLE_ALPHABET,
             values,
             "${Alphabet.DATABASE_TABLE_ALPHABET_COLUMN_ID} = ?",
             arrayOf(alphabet.id.toString())
-        ) > 0
+        )
+
+        db.close()
+        return result != -1
     }
 
     fun getNHKLessons(): MutableList<NHKLesson> {
@@ -106,6 +109,31 @@ class AppDatabase private constructor(
         cursor.close()
         db.close()
         return nhkLessons
+    }
+
+    fun getStrokeOrder(input: String): String? {
+        val id =
+            STROKE_ORDER_DEFAULT_ID + input.codePointAt(FRIST_CHAR_INDEX).toString(HEXA_DECIMAL)
+        var result: String? = null
+        val db = readableDatabase
+        val cursor = db.query(
+            DATABASE_TABLE_STROKE_ORDER,
+            null,
+            "$DATABASE_TABLE_STROKE_ORDER_COLUMN_ID = ?",
+            arrayOf(id),
+            null,
+            null,
+            null,
+            LIMIT_1
+        )
+
+        if (cursor != null && cursor.moveToFirst()) {
+            result = cursor.getString(cursor.getColumnIndex(DATABASE_TABLE_STROKE_ORDER_COLUMN_XML))
+        }
+
+        cursor.close()
+        db.close()
+        return result
     }
 
     private fun installDatabaseFromAssets() {
@@ -160,6 +188,13 @@ class AppDatabase private constructor(
         private const val ERROR_MESSAGE = "The $DATABASE_NAME database could't be installed"
         private const val DATABASE_TABLE_ALPHABET = "Alphabet"
         private const val DATABASE_TABLE_NHK_LESSON = "NHKLesson"
+        private const val DATABASE_TABLE_STROKE_ORDER = "StrokeOrder"
+        private const val DATABASE_TABLE_STROKE_ORDER_COLUMN_ID = "id"
+        private const val DATABASE_TABLE_STROKE_ORDER_COLUMN_XML = "xml"
+        private const val STROKE_ORDER_DEFAULT_ID = "kvg:kanji_0"
+        private const val HEXA_DECIMAL = 16
+        private const val FRIST_CHAR_INDEX = 0
+        private const val LIMIT_1 = "1"
 
         @SuppressLint("StaticFieldLeak")
         @Volatile
