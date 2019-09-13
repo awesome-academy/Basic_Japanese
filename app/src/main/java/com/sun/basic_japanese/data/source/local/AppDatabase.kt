@@ -34,6 +34,11 @@ class AppDatabase private constructor(
         return super.getReadableDatabase()
     }
 
+    override fun getWritableDatabase(): SQLiteDatabase {
+        installOrUpdateIfNecessary()
+        return super.getWritableDatabase()
+    }
+
     fun getAlphabets(): MutableList<Alphabet> {
         val alphabets = mutableListOf<Alphabet>()
         val db = readableDatabase
@@ -81,7 +86,7 @@ class AppDatabase private constructor(
         val values = ContentValues().apply {
             put(Alphabet.DATABASE_TABLE_ALPHABET_COLUMN_REMEMBER, alphabet.remember)
         }
-        val db = readableDatabase
+        val db = writableDatabase
 
         val result = db.update(
             DATABASE_TABLE_ALPHABET,
