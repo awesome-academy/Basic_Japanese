@@ -166,8 +166,7 @@ object SVGFileHelper {
 
     private fun Pattern.collect(
         input: String,
-        groupIndex: Int = 0,
-        maxCount: Int = Int.MAX_VALUE
+        groupIndex: Int = 0
     ): List<String> {
         val matcher = matcher(input)
         val list = ArrayList<String>()
