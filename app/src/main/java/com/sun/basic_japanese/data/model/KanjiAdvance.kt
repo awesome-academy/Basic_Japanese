@@ -17,7 +17,9 @@ class KanjiAdvance(
     override val example: String,
     override var favorite: String = Constants.FALSE,
     override var tag: String = Constants.FALSE
+
 ) : Kanji() {
+
     constructor(jsonObject: JSONObject) : this(
         jsonObject.optInt(JSON_KEY_ID),
         jsonObject.optString(JSON_KEY_WORD),
