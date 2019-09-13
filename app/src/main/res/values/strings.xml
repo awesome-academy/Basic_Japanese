@@ -11,4 +11,6 @@
     <string name="title_basic_courses">Khóa học nhập môn</string>
     <string name="title_kanji_courses">Khóa học Kanji</string>
     <string name="title_help">Trợ giúp</string>
+    <string name="title_hiragana">Hiragana</string>
+    <string name="title_katakana">Katakana</string>
 </resources>
