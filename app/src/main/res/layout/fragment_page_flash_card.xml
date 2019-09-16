@@ -37,7 +37,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dp_540"
         android:height="@dimen/dp_48"
-        android:text="@string/switch_remember"
+        android:text="@string/title_switch_remember"
         android:textSize="@dimen/sp_18" />
 
     <Button
