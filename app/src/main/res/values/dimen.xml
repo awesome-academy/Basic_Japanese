@@ -21,4 +21,5 @@
     <dimen name="dp_400">400dp</dimen>
     <dimen name="dp_300">300dp</dimen>
     <dimen name="sp_132">132sp</dimen>
+    <dimen name="dp_540">540dp</dimen>
 </resources>

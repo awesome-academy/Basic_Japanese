@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -36,7 +35,7 @@
         android:layout_width="@dimen/dp_300"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dp_640"
+        android:layout_marginTop="@dimen/dp_540"
         android:height="@dimen/dp_48"
         android:text="@string/switch_remember"
         android:textSize="@dimen/sp_18" />
