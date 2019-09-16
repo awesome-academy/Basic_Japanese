@@ -6,10 +6,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.EMPTY_STRING
-import com.sun.basic_japanese.data.model.Alphabet
-import com.sun.basic_japanese.data.model.KanjiAdvance
-import com.sun.basic_japanese.data.model.KanjiBasic
-import com.sun.basic_japanese.data.model.NHKLesson
+import com.sun.basic_japanese.data.model.*
 import com.sun.basic_japanese.util.Constants
 import java.io.File
 import java.io.FileOutputStream
@@ -377,7 +374,67 @@ class AppDatabase private constructor(
         return result != -1
     }
 
-    fun getStrokeOrder(input: String): String {
+    fun getJLPTTestLocal(category: String): List<JLPTTest> {
+        val jlptTests = mutableListOf<JLPTTest>()
+
+        val db = readableDatabase
+        val cursor = db.query(
+            DATABASE_TABLE_JLPT_TEST,
+            null,
+            "${JLPTTest.JSON_KEY_CATEGORY} = ?",
+            arrayOf(category),
+            null,
+            null,
+            null
+        )
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                val jlptTest = JLPTTest(cursor)
+                jlptTests.add(jlptTest)
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+
+        return jlptTests
+    }
+
+    @Synchronized
+    fun updateJLPTTestLocal(jlptTest:  List<JLPTTest>): Boolean {
+        val db = writableDatabase
+        val cursor = db.query(
+            DATABASE_TABLE_JLPT_TEST,
+            null,
+            "${JLPTTest.JSON_KEY_CATEGORY} = ?",
+            arrayOf(jlptTest[0].category),
+            null,
+            null,
+            null
+        )
+        val values = ContentValues()
+
+        if (cursor != null && !cursor.moveToFirst()) {
+            for (index in jlptTest.indices) {
+                values.apply {
+                    put(JLPTTest.JSON_KEY_CATEGORY, jlptTest[index].category)
+                    put(JLPTTest.JSON_KEY_CORRECT, jlptTest[index].correct)
+                    put(JLPTTest.JSON_KEY_QUESTION, jlptTest[index].question)
+                    put(JLPTTest.JSON_KEY_ANSWER, jlptTest[index].answer)
+                }
+                if (db.insert(DATABASE_TABLE_JLPT_TEST, null, values) == -1L) {
+                    return false
+                }
+            }
+        }
+
+        cursor.close()
+        db.close()
+        return true
+    }
+
+    fun getStrokeOrder(input: String): String? {
         val id =
             STROKE_ORDER_DEFAULT_ID + input.codePointAt(FRIST_CHAR_INDEX).toString(HEXA_DECIMAL)
         var result: String? = null
@@ -451,12 +508,13 @@ class AppDatabase private constructor(
     companion object {
         private const val ASSETS_DB_PATH = "databases"
         private const val DATABASE_NAME = "AppDatabase.db"
-        private const val DATABASE_VERSION = 7
+        private const val DATABASE_VERSION = 1
         private const val ERROR_MESSAGE = "The $DATABASE_NAME database could't be installed"
         private const val DATABASE_TABLE_ALPHABET = "Alphabet"
         private const val DATABASE_TABLE_NHK_LESSON = "NHKLesson"
         private const val DATABASE_TABLE_KANJI_BASIC = "KanjiBasic"
         private const val DATABASE_TABLE_KANJI_ADVANCE = "KanjiAdvance"
+        private const val DATABASE_TABLE_JLPT_TEST = "JLPTTest"
         private const val DATABASE_TABLE_STROKE_ORDER = "StrokeOrder"
         private const val DATABASE_TABLE_STROKE_ORDER_COLUMN_ID = "id"
         private const val DATABASE_TABLE_STROKE_ORDER_COLUMN_XML = "xml"

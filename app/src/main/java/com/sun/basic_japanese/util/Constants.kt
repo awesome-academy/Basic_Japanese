@@ -8,6 +8,7 @@ object Constants {
     const val PATH_API = "api"
     const val PATH_KANJI_BASIC = "getIKanji.php"
     const val PATH_KANJI_ADVANCE = "getKanji.php"
+    const val PATH_JLPT_TEST = "getLessionJLPT.php"
     const val PATH_IMAGE = "imgs"
     const val PATH_IKANJI = "ikanji"
     const val TRUE = "1"
