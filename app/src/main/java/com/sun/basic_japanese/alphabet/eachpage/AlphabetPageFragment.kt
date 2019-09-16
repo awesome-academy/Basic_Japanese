@@ -12,15 +12,19 @@ import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.ALPHABET_COLUMN_NUMBER
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.TYPE
 import com.sun.basic_japanese.data.model.Alphabet
+import com.sun.basic_japanese.data.model.FlashCardsMessage
 import com.sun.basic_japanese.data.repository.AlphabetRepository
 import com.sun.basic_japanese.data.source.local.AlphabetLocalDataSource
 import com.sun.basic_japanese.data.source.local.AppDatabase
 import kotlinx.android.synthetic.main.fragment_page_alphabet.*
 
-class AlphabetPageFragment : BaseFragment(), AlphabetPageContract.View {
+class AlphabetPageFragment : BaseFragment(),
+    AlphabetPageContract.View,
+    AlphabetRecyclerAdapter.RecyclerViewClickListener {
 
     private var pagePresenter: AlphabetPageContract.Presenter? = null
     private var alphabetType: String? = null
+    private var alphabetItems = listOf<Alphabet?>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,25 +44,30 @@ class AlphabetPageFragment : BaseFragment(), AlphabetPageContract.View {
     }
 
     override fun showAlphabetData(alphabetItems: List<Alphabet?>) {
+        this.alphabetItems = alphabetItems
         val gridLayoutManager = GridLayoutManager(
             context,
             ALPHABET_COLUMN_NUMBER,
             LinearLayoutManager.VERTICAL,
             false
         )
-        val gridAdapter = AlphabetRecyclerAdapter(alphabetItems, alphabetType)
+        val gridAdapter = AlphabetRecyclerAdapter(alphabetItems, alphabetType, this)
         recyclerAlphabet.apply {
             layoutManager = gridLayoutManager
             adapter = gridAdapter
         }
     }
 
-    override fun initPresenter() {
+    private fun initPresenter() {
         context?.let {
             val alphabetRepository =
                 AlphabetRepository.getInstance(AlphabetLocalDataSource(AppDatabase.getInstance(it)))
             pagePresenter = AlphabetPagePresenter(this, alphabetRepository)
         }
+    }
+
+    override fun onRecyclerViewItemClick(currentPosition: Int) {
+        TODO()
     }
 
     companion object {

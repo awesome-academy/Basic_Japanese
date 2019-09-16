@@ -12,13 +12,14 @@ import kotlinx.android.synthetic.main.item_word.view.*
 
 class AlphabetRecyclerAdapter(
     private val alphabetItems: List<Alphabet?>,
-    private val alphabetType: String?
+    private val alphabetType: String?,
+    private val listener: RecyclerViewClickListener
 ) : RecyclerView.Adapter<AlphabetRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.item_word, parent, false)
-        return ViewHolder(view)
+        return ViewHolder(view, listener)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
@@ -26,10 +27,17 @@ class AlphabetRecyclerAdapter(
     }
 
     override fun getItemCount() = alphabetItems.size
+    class ViewHolder(
+        itemView: View,
+        private val listener: RecyclerViewClickListener
+    ) : RecyclerView.ViewHolder(itemView) {
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textWordLabel: TextView? = itemView.textAlphabetJapanese
         private val textWordDescription: TextView? = itemView.textAlphabetInternational
+
+        init {
+            setClickEvent()
+        }
 
         fun bindData(alphabet: Alphabet?, alphabetType: String?) {
             if (alphabet != null) {
@@ -41,6 +49,16 @@ class AlphabetRecyclerAdapter(
                 textWordDescription?.text = EMPTY_TITLE
             }
         }
+
+        private fun setClickEvent() {
+            itemView.setOnClickListener {
+                listener.onRecyclerViewItemClick(adapterPosition)
+            }
+        }
+    }
+
+    interface RecyclerViewClickListener {
+        fun onRecyclerViewItemClick(currentPosition: Int)
     }
 
     companion object {
