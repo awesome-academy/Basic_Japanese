@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.sun.basic_japanese.R
+import com.sun.basic_japanese.constants.BasicJapaneseConstants.EMPTY_STRING
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.HIRAGANA
 import com.sun.basic_japanese.data.model.Alphabet
 import kotlinx.android.synthetic.main.item_word.view.*
@@ -45,8 +46,8 @@ class AlphabetRecyclerAdapter(
                 else textWordLabel?.text = alphabet.katakana
                 textWordDescription?.text = alphabet.romaji
             } else {
-                textWordLabel?.text = EMPTY_TITLE
-                textWordDescription?.text = EMPTY_TITLE
+                textWordLabel?.text = EMPTY_STRING
+                textWordDescription?.text = EMPTY_STRING
             }
         }
 
@@ -59,9 +60,5 @@ class AlphabetRecyclerAdapter(
 
     interface RecyclerViewClickListener {
         fun onRecyclerViewItemClick(currentPosition: Int)
-    }
-
-    companion object {
-        private const val EMPTY_TITLE = ""
     }
 }

@@ -16,6 +16,7 @@ import com.sun.basic_japanese.data.model.FlashCardsMessage
 import com.sun.basic_japanese.data.repository.AlphabetRepository
 import com.sun.basic_japanese.data.source.local.AlphabetLocalDataSource
 import com.sun.basic_japanese.data.source.local.AppDatabase
+import com.sun.basic_japanese.flashcard.allpages.FlashCardFragment
 import kotlinx.android.synthetic.main.fragment_page_alphabet.*
 
 class AlphabetPageFragment : BaseFragment(),
@@ -58,16 +59,23 @@ class AlphabetPageFragment : BaseFragment(),
         }
     }
 
+    override fun onRecyclerViewItemClick(currentPosition: Int) {
+        getNavigationManager().open(
+            FlashCardFragment.newInstance(
+                FlashCardsMessage(
+                    alphabetItems,
+                    currentPosition
+                )
+            )
+        )
+    }
+
     private fun initPresenter() {
         context?.let {
             val alphabetRepository =
                 AlphabetRepository.getInstance(AlphabetLocalDataSource(AppDatabase.getInstance(it)))
             pagePresenter = AlphabetPagePresenter(this, alphabetRepository)
         }
-    }
-
-    override fun onRecyclerViewItemClick(currentPosition: Int) {
-        TODO()
     }
 
     companion object {
