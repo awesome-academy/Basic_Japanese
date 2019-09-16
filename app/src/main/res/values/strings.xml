@@ -13,4 +13,5 @@
     <string name="title_help">Trợ giúp</string>
     <string name="title_hiragana">Hiragana</string>
     <string name="title_katakana">Katakana</string>
+    <string name="switch_remember">Đã nhớ từ này</string>
 </resources>

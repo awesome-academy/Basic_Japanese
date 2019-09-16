@@ -8,7 +8,6 @@ import com.sun.basic_japanese.R
 import com.sun.basic_japanese.alphabet.eachpage.AlphabetPageFragment
 import com.sun.basic_japanese.alphabet.adapter.PagerAdapter
 import com.sun.basic_japanese.base.BaseFragment
-import com.sun.basic_japanese.base.BasePresenter
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.HIRAGANA
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.KATAKANA
 import kotlinx.android.synthetic.main.fragment_alphabet.*
@@ -29,7 +28,7 @@ class AlphabetFragment : BaseFragment(), AlphabetContract.View {
         setupViewPager()
     }
 
-    override fun initPresenter() {
+    private fun initPresenter() {
         alphabetPresenter = AlphabetPresenter(this)
     }
 

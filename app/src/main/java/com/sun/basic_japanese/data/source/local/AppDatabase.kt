@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.sun.basic_japanese.constants.BasicJapaneseConstants.EMPTY_STRING
 import com.sun.basic_japanese.data.model.Alphabet
 import com.sun.basic_japanese.data.model.KanjiAdvance
 import com.sun.basic_japanese.data.model.KanjiBasic
@@ -376,7 +377,7 @@ class AppDatabase private constructor(
         return result != -1
     }
 
-    fun getStrokeOrder(input: String): String? {
+    fun getStrokeOrder(input: String): String {
         val id =
             STROKE_ORDER_DEFAULT_ID + input.codePointAt(FRIST_CHAR_INDEX).toString(HEXA_DECIMAL)
         var result: String? = null
@@ -398,7 +399,8 @@ class AppDatabase private constructor(
 
         cursor.close()
         db.close()
-        return result
+
+        return result ?: EMPTY_STRING
     }
 
     private fun installDatabaseFromAssets() {
@@ -449,7 +451,7 @@ class AppDatabase private constructor(
     companion object {
         private const val ASSETS_DB_PATH = "databases"
         private const val DATABASE_NAME = "AppDatabase.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 7
         private const val ERROR_MESSAGE = "The $DATABASE_NAME database could't be installed"
         private const val DATABASE_TABLE_ALPHABET = "Alphabet"
         private const val DATABASE_TABLE_NHK_LESSON = "NHKLesson"
