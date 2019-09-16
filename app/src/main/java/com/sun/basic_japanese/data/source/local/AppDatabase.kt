@@ -434,7 +434,7 @@ class AppDatabase private constructor(
         return true
     }
 
-    fun getStrokeOrder(input: String): String? {
+    fun getStrokeOrder(input: String): String {
         val id =
             STROKE_ORDER_DEFAULT_ID + input.codePointAt(FRIST_CHAR_INDEX).toString(HEXA_DECIMAL)
         var result: String? = null
