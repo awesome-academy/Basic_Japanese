@@ -6,10 +6,12 @@ import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.HasNavigationManager
 import com.sun.basic_japanese.base.NavigationManager
 import com.sun.basic_japanese.home.HomeFragment
+import com.sun.basic_japanese.kanji_basic.KanjiBasicFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),
     HomeFragment.OnHomeFragmentInteractionListener,
+    KanjiBasicFragment.OnKanjiBasicFragmentInteractionListener,
     HasNavigationManager {
 
     private lateinit var navigationManager: NavigationManager
