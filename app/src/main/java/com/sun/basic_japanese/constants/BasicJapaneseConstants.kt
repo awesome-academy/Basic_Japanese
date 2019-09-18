@@ -11,4 +11,6 @@ object BasicJapaneseConstants {
     const val WORD_MAX_GROUP = 5
     const val EMPTY_STRING = ""
     const val FLASHCARD_ANIMATION_DELAY = 500L
+    const val REMEMBERED = 1
+    const val FORGOTTEN = 0
 }

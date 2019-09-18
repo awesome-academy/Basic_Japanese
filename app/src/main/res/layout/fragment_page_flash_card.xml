@@ -6,12 +6,12 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/dp_480"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_24"
         android:layout_marginEnd="@dimen/dp_24"
-        android:layout_marginBottom="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_64"
         android:background="@drawable/fragment_background" />
 
     <com.sun.basic_japanese.widget.StrokeOrderAnimatedView
@@ -26,17 +26,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dp_400"
+        android:layout_marginTop="@dimen/dp_348"
         android:gravity="center"
         android:textSize="@dimen/sp_32" />
 
     <Switch
         android:id="@+id/switchRemember"
-        android:layout_width="@dimen/dp_300"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/dp_540"
+        android:layout_marginStart="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_580"
+        android:layout_marginEnd="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_8"
         android:height="@dimen/dp_48"
+        android:background="@drawable/fragment_background"
+        android:gravity="center"
         android:text="@string/title_switch_remember"
         android:textSize="@dimen/sp_18" />
 
@@ -46,6 +51,6 @@
         android:layout_height="@dimen/dp_64"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/dp_480"
-        android:background="@drawable/play_audio_button_background" />
+        android:background="@drawable/audio_button_background" />
 
 </FrameLayout>

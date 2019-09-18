@@ -15,20 +15,12 @@
     <dimen name="dp_200">200dp</dimen>
     <dimen name="dp_232">232dp</dimen>
     <dimen name="dp_240">240dp</dimen>
-    <dimen name="dp_300">300dp</dimen>
     <dimen name="dp_348">348dp</dimen>
-    <dimen name="dp_400">400dp</dimen>
     <dimen name="dp_480">480dp</dimen>
-    <dimen name="dp_540">540dp</dimen>
-    <dimen name="dp_600">600dp</dimen>
     <dimen name="dp_640">640dp</dimen>
-
     <dimen name="sp_12">12sp</dimen>
-    <dimen name="sp_16">12sp</dimen>
     <dimen name="sp_18">18sp</dimen>
     <dimen name="sp_32">32sp</dimen>
-    <dimen name="sp_132">132sp</dimen>
-
     <dimen name="px_1">1px</dimen>
-
+    <dimen name="dp_580">580dp</dimen>
 </resources>
