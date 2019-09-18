@@ -9,7 +9,7 @@ import com.sun.basic_japanese.R
 import com.sun.basic_japanese.alphabet.allpages.AlphabetFragment
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.FragmentInteractionListener
-import kotlinx.android.synthetic.main.activity_main.*
+import com.sun.basic_japanese.kanji_basic.KanjiBasicFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.one_line_element.view.*
 
@@ -34,6 +34,9 @@ class HomeFragment : BaseFragment() {
     private fun setEventClick() {
         layoutAlphabet.setOnClickListener {
             getNavigationManager().open(AlphabetFragment.newInstance())
+        }
+        layoutKanjiBasic.setOnClickListener {
+            getNavigationManager().open(KanjiBasicFragment.newInstance())
         }
     }
 
@@ -72,7 +75,7 @@ class HomeFragment : BaseFragment() {
                     R.drawable.ic_text_fields_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.title_kanji)
+            it.textLabel?.text = resources.getText(R.string.title_kanji_basic)
         }
         layoutKanjiWriting?.let {
             it.imageIcon?.setImageDrawable(

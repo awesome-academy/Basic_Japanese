@@ -1,7 +1,12 @@
 package com.sun.basic_japanese.util
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.os.Build
+import android.text.Html
 import android.util.Base64
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import com.sun.basic_japanese.data.model.DataRequest
 import com.sun.basic_japanese.data.model.Example
@@ -50,6 +55,20 @@ object Extensions {
         for (index in 1 until examplesString.size) {
             val exampleString = examplesString[index].split(Constants.CHARACTER_SPLIT_2)
             add(Example(exampleString[0], exampleString[1], exampleString[2]))
+        }
+    }
+
+    fun ImageView.setImage(input: String) = this.apply {
+        val byteArray = Base64.decode(input, Base64.DEFAULT)
+        val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+        setImageBitmap(bitmap)
+    }
+
+    fun TextView.setHtmlText(input: String) = this.apply {
+        text = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            Html.fromHtml(input, Html.FROM_HTML_MODE_COMPACT)
+        } else {
+            Html.fromHtml(input)
         }
     }
 }

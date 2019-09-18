@@ -4,7 +4,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="title_alphabet">Bảng chữ cái</string>
     <string name="title_audio_learning">Học tiếng nhật NHK</string>
-    <string name="title_kanji">Kanji</string>
+    <string name="title_kanji_basic">Kanji cơ bản</string>
     <string name="title_kanji_writing">Tập viết Kanji</string>
     <string name="title_jlpt_test">Thi JLPT</string>
     <string name="title_translate">Dịch tiếng nhật</string>
@@ -15,4 +15,7 @@
     <string name="title_katakana">Katakana</string>
     <string name="title_switch_remember">Đã nhớ từ này</string>
     <string name="title_audio_lesson">Audio Lesson</string>
+    <string name="title_kanji_onjomi">on:</string>
+    <string name="title_kanji_kunjomi">kun:</string>
+
 </resources>
