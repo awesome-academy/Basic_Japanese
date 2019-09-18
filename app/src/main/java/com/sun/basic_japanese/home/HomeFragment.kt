@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sun.basic_japanese.R
 import com.sun.basic_japanese.alphabet.allpages.AlphabetFragment
+import com.sun.basic_japanese.audiolessons.AudioLessonsFragment
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.FragmentInteractionListener
 import com.sun.basic_japanese.kanji_basic.KanjiBasicFragment
@@ -34,6 +35,9 @@ class HomeFragment : BaseFragment() {
     private fun setEventClick() {
         layoutAlphabet.setOnClickListener {
             getNavigationManager().open(AlphabetFragment.newInstance())
+        }
+        layoutAudio.setOnClickListener {
+            getNavigationManager().open(AudioLessonsFragment.newInstance())
         }
         layoutKanjiBasic.setOnClickListener {
             getNavigationManager().open(KanjiBasicFragment.newInstance())
@@ -116,3 +120,4 @@ class HomeFragment : BaseFragment() {
         fun newInstance() = HomeFragment()
     }
 }
+

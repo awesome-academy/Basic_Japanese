@@ -5,7 +5,9 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.graphics.drawable.Drawable
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.EMPTY_STRING
+import com.sun.basic_japanese.constants.BasicJapaneseConstants.THUMBNAILS_PATH
 import com.sun.basic_japanese.data.model.*
 import com.sun.basic_japanese.util.Constants
 import java.io.File
@@ -115,6 +117,15 @@ class AppDatabase private constructor(
         cursor.close()
         db.close()
         return nhkLessons
+    }
+
+    fun getNHKLessonsThumbnails(): List<Drawable>? {
+        val assetsManager = context.assets
+        return assetsManager.list(THUMBNAILS_PATH)?.map {
+            Drawable.createFromStream(
+                assetsManager.open(THUMBNAILS_PATH + it), null
+            )
+        }
     }
 
     fun getKanjiBasicLocal(lesson: String): List<KanjiBasic> {
@@ -402,7 +413,7 @@ class AppDatabase private constructor(
     }
 
     @Synchronized
-    fun updateJLPTTestLocal(jlptTest:  List<JLPTTest>): Boolean {
+    fun updateJLPTTestLocal(jlptTest: List<JLPTTest>): Boolean {
         val db = writableDatabase
         val cursor = db.query(
             DATABASE_TABLE_JLPT_TEST,

@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.sun.basic_japanese.R
-import com.sun.basic_japanese.data.model.NHKLesson
+import com.sun.basic_japanese.data.model.NHKLessonWithThumbnail
 import kotlinx.android.synthetic.main.item_audio_lesson.view.*
 
 class AudioLessonsRecyclerAdapter(
-    private val lessonItems: List<NHKLesson>
+    private val lessons: List<NHKLessonWithThumbnail>
 ) : RecyclerView.Adapter<AudioLessonsRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
@@ -21,16 +21,18 @@ class AudioLessonsRecyclerAdapter(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bindData(lessonItems[position])
+        viewHolder.bindData(lessons[position])
     }
 
-    override fun getItemCount() = lessonItems.size
+    override fun getItemCount() = lessons.size
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val textLessonTitle: TextView? = itemView.textLessonTitle
+        private val imageLessonThumbnail: ImageView? = itemView.imageLessonThumbnail
 
-        fun bindData(audioLesson: NHKLesson) {
-            textLessonTitle?.text = audioLesson.title
+        fun bindData(lesson: NHKLessonWithThumbnail) {
+            textLessonTitle?.text = lesson.lesson.title
+            imageLessonThumbnail?.setImageDrawable(lesson.thumbnail)
         }
     }
 }
