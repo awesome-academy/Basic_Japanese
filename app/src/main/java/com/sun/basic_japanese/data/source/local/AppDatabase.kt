@@ -508,7 +508,7 @@ class AppDatabase private constructor(
     companion object {
         private const val ASSETS_DB_PATH = "databases"
         private const val DATABASE_NAME = "AppDatabase.db"
-        private const val DATABASE_VERSION = 1
+        private const val DATABASE_VERSION = 7
         private const val ERROR_MESSAGE = "The $DATABASE_NAME database could't be installed"
         private const val DATABASE_TABLE_ALPHABET = "Alphabet"
         private const val DATABASE_TABLE_NHK_LESSON = "NHKLesson"

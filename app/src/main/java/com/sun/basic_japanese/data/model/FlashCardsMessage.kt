@@ -8,5 +8,5 @@ import kotlinx.android.parcel.Parcelize
 data class FlashCardsMessage(
     val alphabet: List<Alphabet?> = listOf(),
     val currentPosition: Int = 0,
-    val type: String = HIRAGANA
+    val type: String? = HIRAGANA
 ) : Parcelable

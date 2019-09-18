@@ -12,4 +12,5 @@
     <color name="color_play_button">#DE0909</color>
     <color name="color_kanji_onjomi">#307FE4</color>
     <color name="color_kanji_kunjomi">#DD1818</color>
+    <color name="color_word_remembered">#CFEEFF</color>
 </resources>

@@ -64,7 +64,8 @@ class AlphabetPageFragment : BaseFragment(),
             FlashCardFragment.newInstance(
                 FlashCardsMessage(
                     alphabetItems,
-                    currentPosition
+                    currentPosition,
+                    alphabetType
                 )
             )
         )

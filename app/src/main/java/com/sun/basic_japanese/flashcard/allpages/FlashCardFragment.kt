@@ -20,7 +20,7 @@ class FlashCardFragment : BaseFragment(), FlashCardContract.View {
     private var flashCardPresenter: FlashCardContract.Presenter? = null
     private var currentPosition = START_POSITION
     private var alphabetItems = listOf<Alphabet?>()
-    private var type = EMPTY_STRING
+    private var type: String? = EMPTY_STRING
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

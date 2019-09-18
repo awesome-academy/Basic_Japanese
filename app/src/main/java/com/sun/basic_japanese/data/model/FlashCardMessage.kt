@@ -7,5 +7,5 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class FlashCardMessage(
     val alphabet: Alphabet? = null,
-    val type: String = HIRAGANA
+    val type: String? = HIRAGANA
 ) : Parcelable
