@@ -19,8 +19,21 @@ class KanjiAdvancePresenter(
                 }
 
                 override fun onFailed(exception: Exception) {
-                    kanjiAdvanceView.showToast(exception.message.toString())
+                    kanjiAdvanceView.showError(exception.message.toString())
                 }
             })
+    }
+
+    override fun getFavoriteKanjiAdvance() {
+        kanjiRepository.getFavoriteKanjiAdvance(object :
+            OnDataLoadedCallback<KanjiAdvanceResponse> {
+            override fun onSuccess(data: KanjiAdvanceResponse) {
+                kanjiAdvanceView.showKanjiAdvanceData(data.kanjiAdvanceList)
+            }
+
+            override fun onFailed(exception: Exception) {
+                kanjiAdvanceView.showError(exception.message.toString())
+            }
+        })
     }
 }

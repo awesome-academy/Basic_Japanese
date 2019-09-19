@@ -9,10 +9,14 @@ interface KanjiBasicContract {
     interface View: BaseView {
         fun showKanjiBasicData(kanjiBasicList: List<KanjiBasic>)
 
-        fun showToast(message: String)
+        fun showError(message: String)
     }
 
     interface Presenter: BasePresenter {
         fun getKanjiBasicData(lesson: Int)
+
+        fun getFavoriteKanjiBasic()
+
+        fun updateFavoriteKanjiBasic(kanjiBasic: KanjiBasic)
     }
 }

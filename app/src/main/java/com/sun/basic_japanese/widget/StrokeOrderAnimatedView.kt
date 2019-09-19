@@ -45,6 +45,12 @@ class StrokeOrderAnimatedView @JvmOverloads constructor(
         style = Paint.Style.STROKE
         strokeCap = Paint.Cap.ROUND
     }
+    private val typedArray = context.obtainStyledAttributes(
+        attrs,
+        R.styleable.StrokeOrderAnimatedView,
+        defStyleAttr,
+        0
+    )
     private val animPaint = Paint(paint)
     private val fingerPaint = Paint(paint).apply { style = Paint.Style.FILL }
     private val lightPaint = Paint(paint)
@@ -72,12 +78,6 @@ class StrokeOrderAnimatedView @JvmOverloads constructor(
         }
 
         if (attrs != null) {
-            val typedArray = context.obtainStyledAttributes(
-                attrs,
-                R.styleable.StrokeOrderAnimatedView,
-                defStyleAttr,
-                0
-            )
             autoRun = typedArray.getBoolean(R.styleable.StrokeOrderAnimatedView_autoRun, false)
             animate = typedArray.getBoolean(R.styleable.StrokeOrderAnimatedView_animate, true)
             strokeColor =

@@ -69,12 +69,29 @@ class KanjiBasicRecyclerAdapter(
                         R.drawable.ic_not_favorite_24dp
                     )
                 }
+                buttonKanjiBasicFavorite.setOnClickListener {
+                    when (itemData.favorite) {
+                        Constants.FALSE -> {
+                            listener.updateFavoriteKanji(itemData.apply{ favorite = Constants.TRUE })
+                            buttonKanjiBasicFavorite?.setImageResource(
+                                R.drawable.ic_favorite_24dp
+                            )
+                        }
+
+                        Constants.TRUE -> {
+                            listener.updateFavoriteKanji(itemData.apply{ favorite = Constants.FALSE })
+                            buttonKanjiBasicFavorite?.setImageResource(
+                                R.drawable.ic_not_favorite_24dp
+                            )
+                        }
+                    }
+                }
             }
         }
 
         override fun onHandleItemClick(mainItem: KanjiBasic) {
             super.onHandleItemClick(mainItem)
-            listener.showKanjiBasicDetail(mainItem)
+            listener.showKanjiBasicDetail(adapterPosition)
         }
     }
 
@@ -94,6 +111,8 @@ class KanjiBasicRecyclerAdapter(
     }
 
     interface OnKanjiBasicItemClickListener {
-        fun showKanjiBasicDetail(kanjiBasic: KanjiBasic)
+        fun showKanjiBasicDetail(currentPosition: Int)
+
+        fun updateFavoriteKanji(kanjiBasic: KanjiBasic)
     }
 }

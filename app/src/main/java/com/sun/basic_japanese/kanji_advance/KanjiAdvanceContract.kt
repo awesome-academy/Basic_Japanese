@@ -8,10 +8,12 @@ interface KanjiAdvanceContract {
     interface View: BaseView {
         fun showKanjiAdvanceData(kanjiAdvanceList: List<KanjiAdvance>)
 
-        fun showToast(message: String)
+        fun showError(message: String)
     }
 
     interface Presenter: BasePresenter {
         fun getKanjiAdvanceData(from: Int, to: Int)
+
+        fun getFavoriteKanjiAdvance()
     }
 }
