@@ -1,12 +1,17 @@
 package com.sun.basic_japanese.data.source.local
 
 import com.sun.basic_japanese.data.model.Alphabet
+import com.sun.basic_japanese.data.model.AlphabetAudioResponse
 import com.sun.basic_japanese.data.model.AlphabetsResponse
 import com.sun.basic_japanese.data.source.AlphabetDataSource
 import com.sun.basic_japanese.data.source.OnDataLoadedCallback
 import com.sun.basic_japanese.util.Constants
 
 class AlphabetLocalDataSource(private val database: AppDatabase) : AlphabetDataSource.Local {
+
+    override fun getAlphabetAudio(audioFilename: String, callback: OnDataLoadedCallback<AlphabetAudioResponse>) {
+        LoadDataAsync(callback).execute(AlphabetAudioResponse(database.getAlphabetAudio(audioFilename)))
+    }
 
     override fun getAllAlphabets(callback: OnDataLoadedCallback<AlphabetsResponse>) {
         LoadDataAsync(object : LocalDataHandler<String, AlphabetsResponse> {

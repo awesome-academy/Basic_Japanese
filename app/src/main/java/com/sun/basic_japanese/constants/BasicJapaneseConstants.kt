@@ -14,5 +14,6 @@ object BasicJapaneseConstants {
     const val REMEMBERED = 1
     const val FORGOTTEN = 0
     const val THUMBNAILS_PATH = "lessonthumbnails/"
+    const val ALPHABET_AUDIO_PATH = "alphabetsaudio/"
     const val AUDIO_LESSONS_COLUMN_NUMBER = 2
 }

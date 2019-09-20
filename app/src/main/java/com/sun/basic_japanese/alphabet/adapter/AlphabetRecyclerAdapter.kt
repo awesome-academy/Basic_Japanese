@@ -46,22 +46,33 @@ class AlphabetRecyclerAdapter(
         }
 
         fun bindData(alphabet: Alphabet?, alphabetType: String?) {
+            context?.let {
+                val wordBackgroundColor =
+                    ContextCompat.getColor(context, R.color.color_background)
+                setWordBackgroundColor(wordBackgroundColor)
+            }
             if (alphabet != null) {
                 if (alphabetType == HIRAGANA) textWordLabel?.text = alphabet.hiragana
                 else textWordLabel?.text = alphabet.katakana
                 textWordDescription?.text = alphabet.romaji
+                itemView.isEnabled = true
                 if (alphabet.remember == REMEMBERED) {
                     context?.let {
                         val wordBackgroundColor =
                             ContextCompat.getColor(context, R.color.color_word_remembered)
-                        textWordLabel?.setBackgroundColor(wordBackgroundColor)
-                        textWordDescription?.setBackgroundColor(wordBackgroundColor)
+                        setWordBackgroundColor(wordBackgroundColor)
                     }
                 }
             } else {
+                itemView.isEnabled = false
                 textWordLabel?.text = EMPTY_STRING
                 textWordDescription?.text = EMPTY_STRING
             }
+        }
+
+        private fun setWordBackgroundColor(color: Int) {
+            textWordLabel?.setBackgroundColor(color)
+            textWordDescription?.setBackgroundColor(color)
         }
 
         private fun setClickEvent() {

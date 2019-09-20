@@ -51,8 +51,10 @@ class FlashCardFragment : BaseFragment(), FlashCardContract.View {
     private fun showFlashCards() {
         val flashCardFragments = mutableListOf<FlashCardPageFragment>()
         alphabetItems.forEach {
-            val flashCard = FlashCardMessage(it, type)
-            flashCardFragments.add(FlashCardPageFragment.newInstance(flashCard))
+            if (it != null) {
+                val flashCard = FlashCardMessage(it, type)
+                flashCardFragments.add(FlashCardPageFragment.newInstance(flashCard))
+            }
         }
 
         fragmentManager?.let {
