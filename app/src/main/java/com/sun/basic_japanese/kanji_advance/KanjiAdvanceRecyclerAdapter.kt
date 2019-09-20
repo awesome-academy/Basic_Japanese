@@ -61,7 +61,7 @@ class KanjiAdvanceRecyclerAdapter(
 
         override fun onHandleItemClick(mainItem: KanjiAdvance) {
             super.onHandleItemClick(mainItem)
-            listener.showKanjiAdvanceDetail(mainItem)
+            listener.showKanjiAdvanceDetail(adapterPosition)
         }
     }
 
@@ -81,6 +81,6 @@ class KanjiAdvanceRecyclerAdapter(
     }
 
     interface OnKanjiAdvanceItemClickListener {
-        fun showKanjiAdvanceDetail(kanjiAdvance: KanjiAdvance)
+        fun showKanjiAdvanceDetail(currentPosition: Int)
     }
 }

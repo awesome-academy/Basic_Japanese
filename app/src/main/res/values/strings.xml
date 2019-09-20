@@ -18,6 +18,7 @@
     <string name="title_audio_lesson">Audio Lesson</string>
     <string name="title_kanji_onjomi">on:</string>
     <string name="title_kanji_kunjomi">kun:</string>
+    <string name="title_select_dialog">Lựa chọn bài học</string>
     <string name="title_lesson">Bài</string>
     <string name="title_favorite">Yêu thích</string>
 
