@@ -4,28 +4,39 @@ import com.sun.basic_japanese.data.model.Alphabet
 import com.sun.basic_japanese.data.model.AlphabetsResponse
 import com.sun.basic_japanese.data.source.AlphabetDataSource
 import com.sun.basic_japanese.data.source.OnDataLoadedCallback
+import com.sun.basic_japanese.util.Constants
 
 class AlphabetLocalDataSource(private val database: AppDatabase) : AlphabetDataSource.Local {
 
     override fun getAllAlphabets(callback: OnDataLoadedCallback<AlphabetsResponse>) {
-        LoadDataAsync(callback).execute(AlphabetsResponse(database.getAlphabets()))
+        LoadDataAsync(object : LocalDataHandler<String, AlphabetsResponse> {
+            override fun execute(vararg params: String): AlphabetsResponse =
+                AlphabetsResponse(database.getAlphabets())
+        }, callback).execute(Constants.EMPTY_STRING)
     }
 
     override fun getRememberAlphabets(callback: OnDataLoadedCallback<AlphabetsResponse>) {
-        LoadDataAsync(callback).execute(AlphabetsResponse(database.getAlphabetsByRemember(REMEMBER)))
+        LoadDataAsync(object : LocalDataHandler<String, AlphabetsResponse> {
+            override fun execute(vararg params: String): AlphabetsResponse =
+                AlphabetsResponse(database.getAlphabetsByRemember(REMEMBER))
+        }, callback).execute(Constants.EMPTY_STRING)
     }
 
     override fun getNotRememberAlphabets(callback: OnDataLoadedCallback<AlphabetsResponse>) {
-        LoadDataAsync(callback).execute(
-            AlphabetsResponse(database.getAlphabetsByRemember(NOT_REMEMBER))
-        )
+        LoadDataAsync(object : LocalDataHandler<String, AlphabetsResponse> {
+            override fun execute(vararg params: String): AlphabetsResponse =
+                AlphabetsResponse(database.getAlphabetsByRemember(NOT_REMEMBER))
+        }, callback).execute(Constants.EMPTY_STRING)
     }
 
     override fun updateRememberAlphabet(
         alphabet: Alphabet,
         callback: OnDataLoadedCallback<Boolean>
     ) {
-        LoadDataAsync(callback).execute(database.updateRememberAlphabet(alphabet))
+        LoadDataAsync(object : LocalDataHandler<Alphabet, Boolean> {
+            override fun execute(vararg params: Alphabet): Boolean =
+                database.updateRememberAlphabet(params[0])
+        }, callback).execute(alphabet)
     }
 
     companion object {

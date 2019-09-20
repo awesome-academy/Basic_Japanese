@@ -13,6 +13,8 @@ object Constants {
     const val PATH_IKANJI = "ikanji"
     const val TRUE = "1"
     const val FALSE = "0"
+    const val EMPTY_STRING = ""
     const val CHARACTER_SPLIT_1 = '※'
     const val CHARACTER_SPLIT_2 = '∴'
+    const val CHARACTER_SPLIT_3 = ','
 }

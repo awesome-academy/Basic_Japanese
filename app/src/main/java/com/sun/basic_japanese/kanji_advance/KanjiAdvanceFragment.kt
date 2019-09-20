@@ -1,16 +1,16 @@
-package com.sun.basic_japanese.kanji_basic
+package com.sun.basic_japanese.kanji_advance
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sun.basic_japanese.R
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.FragmentInteractionListener
-import com.sun.basic_japanese.data.model.KanjiBasic
+import com.sun.basic_japanese.data.model.KanjiAdvance
 import com.sun.basic_japanese.data.repository.KanjiRepository
 import com.sun.basic_japanese.data.source.local.AppDatabase
 import com.sun.basic_japanese.data.source.local.KanjiLocalDataSource
@@ -19,10 +19,10 @@ import com.sun.basic_japanese.util.Extensions.showToast
 import kotlinx.android.synthetic.main.bottom_navigation.*
 import kotlinx.android.synthetic.main.fragment_kanji.*
 
-class KanjiBasicFragment @SuppressLint("ValidFragment") private constructor() : BaseFragment(),
+class KanjiAdvanceFragment @SuppressLint("ValidFragment") private constructor() : BaseFragment(),
     View.OnClickListener,
-    KanjiBasicContract.View,
-    KanjiBasicRecyclerAdapter.OnKanjiBasicItemClickListener {
+    KanjiAdvanceContract.View,
+    KanjiAdvanceRecyclerAdapter.OnKanjiAdvanceItemClickListener {
 
     private val local by lazy {
         context?.let { KanjiLocalDataSource.getInstance(AppDatabase.getInstance(it)) }
@@ -34,16 +34,16 @@ class KanjiBasicFragment @SuppressLint("ValidFragment") private constructor() : 
         local?.let { KanjiRepository.getInstance(it, remote) }
     }
     private val kanjiBasicPresenter by lazy {
-        kanjiRepository?.let { KanjiBasicPresenter(this, it) }
+        kanjiRepository?.let { KanjiAdvancePresenter(this, it) }
     }
-    private val kanjiBasicRecyclerAdapter = KanjiBasicRecyclerAdapter(this)
+    private val kanjiBasicRecyclerAdapter = KanjiAdvanceRecyclerAdapter(this)
 
-    private var listener: OnKanjiBasicFragmentInteractionListener? = null
+    private var listener: OnKanjiAdvanceFragmentInteractionListener? = null
     private var currentLesson = 1
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
-        if (context is OnKanjiBasicFragmentInteractionListener) {
+        if (context is OnKanjiAdvanceFragmentInteractionListener) {
             listener = context
         } else {
             throw RuntimeException("${context.toString()} $ERROR_IMPLEMENT_FRAGMENT_INTERACTION_LISTENER")
@@ -59,11 +59,11 @@ class KanjiBasicFragment @SuppressLint("ValidFragment") private constructor() : 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-        kanjiBasicPresenter?.getKanjiBasicData(currentLesson)
+        showKanjiAdvanceLesson(currentLesson)
     }
 
-    override fun showKanjiBasicData(kanjiBasicList: List<KanjiBasic>) {
-        kanjiBasicRecyclerAdapter.updateData(kanjiBasicList)
+    override fun showKanjiAdvanceData(kanjiAdvanceList: List<KanjiAdvance>) {
+        kanjiBasicRecyclerAdapter.updateData(kanjiAdvanceList)
     }
 
     override fun showToast(message: String) {
@@ -76,19 +76,19 @@ class KanjiBasicFragment @SuppressLint("ValidFragment") private constructor() : 
 
             }
 
-            R.id.buttonLessonPrevious -> showKanjiBasicLesson(--currentLesson)
+            R.id.buttonLessonPrevious -> showKanjiAdvanceLesson(--currentLesson)
 
-            R.id.buttonLessonNext -> showKanjiBasicLesson(++currentLesson)
+            R.id.buttonLessonNext -> showKanjiAdvanceLesson(++currentLesson)
         }
     }
 
-    override fun showKanjiBasicDetail(kanjiBasic: KanjiBasic) {
+    override fun showKanjiAdvanceDetail(kanjiAdvance: KanjiAdvance) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     private fun initView() {
         recyclerKanji?.apply {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = GridLayoutManager(context, 4)
             adapter = kanjiBasicRecyclerAdapter
         }
 
@@ -97,8 +97,11 @@ class KanjiBasicFragment @SuppressLint("ValidFragment") private constructor() : 
         buttonLessonNext.setOnClickListener(this)
     }
 
-    private fun showKanjiBasicLesson(lesson: Int) {
-        kanjiBasicPresenter?.getKanjiBasicData(lesson)
+    private fun showKanjiAdvanceLesson(lesson: Int) {
+        val to = lesson * 100
+        val from = to - 99
+        kanjiBasicPresenter?.getKanjiAdvanceData(from, to)
+
         buttonLessonSelect.text = if (currentLesson == MIN_LESSON)
             resources.getString(R.string.title_favorite)
         else "${resources.getString(R.string.title_favorite)} $currentLesson"
@@ -107,15 +110,15 @@ class KanjiBasicFragment @SuppressLint("ValidFragment") private constructor() : 
         buttonLessonNext.visibility = if (currentLesson < MAX_LESSON) View.VISIBLE else View.GONE
     }
 
-    interface OnKanjiBasicFragmentInteractionListener : FragmentInteractionListener
+    interface OnKanjiAdvanceFragmentInteractionListener : FragmentInteractionListener
 
     companion object {
         private const val MIN_LESSON = 0
-        private const val MAX_LESSON = 32
+        private const val MAX_LESSON = 20
         private const val ERROR_IMPLEMENT_FRAGMENT_INTERACTION_LISTENER =
             "must implement OnKanjiBasicFragmentInteractionListener"
 
         @JvmStatic
-        fun newInstance() = KanjiBasicFragment()
+        fun newInstance() = KanjiAdvanceFragment()
     }
 }
