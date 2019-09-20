@@ -5,6 +5,7 @@
     <string name="title_alphabet">Bảng chữ cái</string>
     <string name="title_audio_learning">Học tiếng nhật NHK</string>
     <string name="title_kanji_basic">Kanji cơ bản</string>
+    <string name="title_kanji_advance">Kanji nâng cao</string>
     <string name="title_kanji_writing">Tập viết Kanji</string>
     <string name="title_jlpt_test">Thi JLPT</string>
     <string name="title_translate">Dịch tiếng nhật</string>
@@ -17,5 +18,7 @@
     <string name="title_audio_lesson">Audio Lesson</string>
     <string name="title_kanji_onjomi">on:</string>
     <string name="title_kanji_kunjomi">kun:</string>
+    <string name="title_lesson">Bài</string>
+    <string name="title_favorite">Yêu thích</string>
 
 </resources>

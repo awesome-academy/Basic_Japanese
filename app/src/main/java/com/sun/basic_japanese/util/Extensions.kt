@@ -16,8 +16,8 @@ import java.net.URL
 
 object Extensions {
 
-    fun Context.showToast(text: String) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+    fun Context.showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     @Throws(IOException::class)
@@ -71,4 +71,6 @@ object Extensions {
             Html.fromHtml(input)
         }
     }
+
+    fun String.getStringBySplit(input: Char, index: Int = 0) = split(input)[index]
 }

@@ -56,6 +56,12 @@
         <include layout="@layout/line" />
 
         <include
+            android:id="@+id/layoutKanjiAdvance"
+            layout="@layout/one_line_element" />
+
+        <include layout="@layout/line" />
+
+        <include
             android:id="@+id/layoutKanjiWriting"
             layout="@layout/one_line_element" />
     </LinearLayout>

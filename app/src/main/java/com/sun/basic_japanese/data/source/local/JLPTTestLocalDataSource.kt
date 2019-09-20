@@ -13,14 +13,20 @@ class JLPTTestLocalDataSource private constructor(
         category: String,
         callback: OnDataLoadedCallback<JLPTTestResponse>
     ) {
-        LoadDataAsync(callback).execute(JLPTTestResponse(database.getJLPTTestLocal(category)))
+        LoadDataAsync(object : LocalDataHandler<String, JLPTTestResponse> {
+            override fun execute(vararg params: String): JLPTTestResponse =
+                JLPTTestResponse(database.getJLPTTestLocal(params[0]))
+        }, callback).execute(category)
     }
 
     override fun updateJLPTTestLocal(
         jlptTests: List<JLPTTest>,
         callback: OnDataLoadedCallback<Boolean>
     ) {
-        LoadDataAsync(callback).execute(database.updateJLPTTestLocal(jlptTests))
+        LoadDataAsync(object : LocalDataHandler<List<JLPTTest>, Boolean> {
+            override fun execute(vararg params: List<JLPTTest>): Boolean =
+                database.updateJLPTTestLocal(params[0])
+        }, callback).execute(jlptTests)
     }
 
     companion object {

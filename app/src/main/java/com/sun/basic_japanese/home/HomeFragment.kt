@@ -10,6 +10,7 @@ import com.sun.basic_japanese.alphabet.allpages.AlphabetFragment
 import com.sun.basic_japanese.audiolessons.AudioLessonsFragment
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.FragmentInteractionListener
+import com.sun.basic_japanese.kanji_advance.KanjiAdvanceFragment
 import com.sun.basic_japanese.kanji_basic.KanjiBasicFragment
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.one_line_element.view.*
@@ -42,6 +43,9 @@ class HomeFragment : BaseFragment() {
         layoutKanjiBasic.setOnClickListener {
             getNavigationManager().open(KanjiBasicFragment.newInstance())
         }
+        layoutKanjiAdvance.setOnClickListener {
+            getNavigationManager().open(KanjiAdvanceFragment.newInstance())
+        }
     }
 
     private fun setView() {
@@ -51,65 +55,76 @@ class HomeFragment : BaseFragment() {
     }
 
     private fun setBasicView() {
-        layoutAlphabet?.let {
-            it.imageIcon?.setImageDrawable(
+        layoutAlphabet?.apply {
+            imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_sort_by_alpha_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.title_alphabet)
+            textLabel?.text = resources.getText(R.string.title_alphabet)
         }
-        layoutAudio?.let {
-            it.imageIcon?.setImageDrawable(
+        layoutAudio?.apply {
+            imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_headset_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.title_audio_learning)
+            textLabel?.text = resources.getText(R.string.title_audio_learning)
         }
     }
 
     private fun setKanjiView() {
-        layoutKanjiBasic?.let {
-            it.imageIcon?.setImageDrawable(
+        layoutKanjiBasic?.apply {
+            imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_text_fields_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.title_kanji_basic)
+            textLabel?.text = resources.getText(R.string.title_kanji_basic)
         }
-        layoutKanjiWriting?.let {
-            it.imageIcon?.setImageDrawable(
+
+        layoutKanjiAdvance?.apply {
+            imageIcon?.setImageDrawable(
+                ResourcesCompat.getDrawable(
+                    resources,
+                    R.drawable.ic_ac_unit_black_24dp, null
+                )
+            )
+            textLabel?.text = resources.getText(R.string.title_kanji_advance)
+        }
+
+        layoutKanjiWriting?.apply {
+            imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_mode_edit_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.title_kanji_writing)
+            textLabel?.text = resources.getText(R.string.title_kanji_writing)
         }
     }
 
     private fun setTestView() {
-        layoutTest?.let {
-            it.imageIcon?.setImageDrawable(
+        layoutTest?.apply {
+            imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_school_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.title_jlpt_test)
+            textLabel?.text = resources.getText(R.string.title_jlpt_test)
         }
-        layoutTranslate?.let {
-            it.imageIcon?.setImageDrawable(
+        layoutTranslate?.apply {
+            imageIcon?.setImageDrawable(
                 ResourcesCompat.getDrawable(
                     resources,
                     R.drawable.ic_translate_black_24dp, null
                 )
             )
-            it.textLabel?.text = resources.getText(R.string.title_translate)
+            textLabel?.text = resources.getText(R.string.title_translate)
         }
     }
 
