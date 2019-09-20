@@ -1,4 +1,4 @@
-package com.sun.basic_japanese.audiolessons
+package com.sun.basic_japanese.audiolessons.lessonsdescription
 
 import com.sun.basic_japanese.data.model.NHKLessonsResponse
 import com.sun.basic_japanese.data.model.NHKLessonsThumbnailsResponse

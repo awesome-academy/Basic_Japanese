@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sun.basic_japanese.R
 import com.sun.basic_japanese.alphabet.allpages.AlphabetFragment
-import com.sun.basic_japanese.audiolessons.AudioLessonsFragment
+import com.sun.basic_japanese.audiolessons.lessonsdescription.AudioLessonsFragment
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.FragmentInteractionListener
 import com.sun.basic_japanese.kanji_advance.KanjiAdvanceFragment

@@ -24,4 +24,8 @@
     <dimen name="sp_132">132sp</dimen>
     <dimen name="px_1">1px</dimen>
     <dimen name="dp_580">580dp</dimen>
+    <dimen name="dp_140">140dp</dimen>
+    <dimen name="dp_320">320dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="sp_16">16sp</dimen>
 </resources>

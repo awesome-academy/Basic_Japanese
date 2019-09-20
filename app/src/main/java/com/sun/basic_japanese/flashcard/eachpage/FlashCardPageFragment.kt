@@ -51,14 +51,12 @@ class FlashCardPageFragment : Fragment(), FlashCardPageContract.View {
     }
 
     override fun setupAudioPlayer(alphabetAudio: AlphabetAudioResponse) {
-        context?.let {
-            audioPlayer.setDataSource(
-                alphabetAudio.audioDescriptor.fileDescriptor,
-                alphabetAudio.audioDescriptor.startOffset,
-                alphabetAudio.audioDescriptor.length
-            )
-            audioPlayer.prepare()
-        }
+        audioPlayer.setDataSource(
+            alphabetAudio.audioDescriptor.fileDescriptor,
+            alphabetAudio.audioDescriptor.startOffset,
+            alphabetAudio.audioDescriptor.length
+        )
+        audioPlayer.prepare()
     }
 
     private fun initPresenter() {
@@ -70,11 +68,9 @@ class FlashCardPageFragment : Fragment(), FlashCardPageContract.View {
     }
 
     private fun showFlashCard() {
-        flashCard?.apply {
-            textWordInternational?.text = alphabet?.romaji
-            if (activity != null) displayWordAnimation()
-            setWordRememberStatus()
-        }
+        textWordInternational?.text = flashCard?.alphabet?.romaji
+        if (activity != null) displayWordAnimation()
+        setWordRememberStatus()
     }
 
     private fun setWordRememberStatus() {
