@@ -50,7 +50,7 @@ class FlashCardFragment : BaseFragment(), FlashCardContract.View {
 
     private fun showFlashCards() {
         val flashCardFragments = mutableListOf<FlashCardPageFragment>()
-        alphabetItems.forEach {
+        alphabetItems.filterNotNull().map {
             val flashCard = FlashCardMessage(it, type)
             flashCardFragments.add(FlashCardPageFragment.newInstance(flashCard))
         }
