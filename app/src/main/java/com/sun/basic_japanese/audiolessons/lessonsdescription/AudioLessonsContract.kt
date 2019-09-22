@@ -1,4 +1,4 @@
-package com.sun.basic_japanese.audiolessons
+package com.sun.basic_japanese.audiolessons.lessonsdescription
 
 import android.graphics.drawable.Drawable
 import com.sun.basic_japanese.base.BasePresenter
