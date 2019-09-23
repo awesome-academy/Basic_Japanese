@@ -18,4 +18,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textPersonNameJapanese"
+        android:layout_width="@dimen/dp_64"
+        android:layout_height="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_32"
+        android:gravity="center"
+        android:textColor="@color/color_text_primary"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textPersonNameInternational"
+        android:layout_width="@dimen/dp_64"
+        android:layout_height="@dimen/dp_32"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_32"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textDialogJapanese"
+        android:layout_width="@dimen/dp_320"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginTop="@dimen/dp_8"
+        android:textColor="@color/color_accent"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintStart_toEndOf="@+id/textPersonNameJapanese"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textDialogInternational"
+        android:layout_width="@dimen/dp_320"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginStart="@dimen/dp_8"
+        android:textColor="@color/color_text_primary"
+        android:textSize="@dimen/sp_16"
+        app:layout_constraintBottom_toTopOf="@+id/textDialogVietnamese"
+        app:layout_constraintStart_toEndOf="@+id/textPersonNameInternational"
+        app:layout_constraintTop_toBottomOf="@+id/textDialogJapanese" />
+
+    <TextView
+        android:id="@+id/textDialogVietnamese"
+        android:layout_width="@dimen/dp_320"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginBottom="@dimen/dp_8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textPersonNameInternational" />
+
 </android.support.constraint.ConstraintLayout>

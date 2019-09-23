@@ -3,12 +3,9 @@ package com.sun.basic_japanese.data.source.local
 import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
-import android.content.res.AssetFileDescriptor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.graphics.drawable.Drawable
-import android.net.Uri
-import com.sun.basic_japanese.constants.BasicJapaneseConstants.ALPHABET_AUDIO_PATH
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.EMPTY_STRING
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.THUMBNAILS_PATH
 import com.sun.basic_japanese.data.model.*

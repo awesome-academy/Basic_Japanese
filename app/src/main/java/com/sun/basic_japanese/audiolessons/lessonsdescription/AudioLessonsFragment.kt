@@ -1,4 +1,4 @@
-package com.sun.basic_japanese.audiolessons
+package com.sun.basic_japanese.audiolessons.lessonsdescription
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -18,7 +18,8 @@ import com.sun.basic_japanese.data.source.local.AppDatabase
 import com.sun.basic_japanese.data.source.local.NHKLessonLocalDataSource
 import kotlinx.android.synthetic.main.fragment_audio_lessons.*
 
-class AudioLessonsFragment : Fragment(), AudioLessonsContract.View {
+class AudioLessonsFragment : Fragment(),
+    AudioLessonsContract.View {
 
     private var audioLessonsPresenter: AudioLessonsContract.Presenter? = null
     private var audioLessons = listOf<NHKLesson>()
@@ -60,7 +61,8 @@ class AudioLessonsFragment : Fragment(), AudioLessonsContract.View {
         context?.let {
             val nhkLessonRepository =
                 NHKLessonRepository.getInstance(NHKLessonLocalDataSource(AppDatabase.getInstance(it)))
-            audioLessonsPresenter = AudioLessonsPresenter(this, nhkLessonRepository)
+            audioLessonsPresenter =
+                AudioLessonsPresenter(this, nhkLessonRepository)
         }
     }
 

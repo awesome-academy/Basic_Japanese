@@ -1,4 +1,4 @@
-package com.sun.basic_japanese.audiolessons
+package com.sun.basic_japanese.audiolessons.lessonsdescription
 
 import com.sun.basic_japanese.data.model.NHKLessonsResponse
 import com.sun.basic_japanese.data.model.NHKLessonsThumbnailsResponse
@@ -9,6 +9,7 @@ class AudioLessonsPresenter(
     private val pageView: AudioLessonsContract.View,
     private val nhkLessonRepository: NHKLessonRepository
 ) : AudioLessonsContract.Presenter {
+
     override fun getLessonsData() {
         nhkLessonRepository.getAllNHKLessons(object : OnDataLoadedCallback<NHKLessonsResponse> {
             override fun onSuccess(data: NHKLessonsResponse) {
