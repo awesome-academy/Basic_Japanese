@@ -9,12 +9,14 @@ import com.sun.basic_japanese.base.NavigationManager
 import com.sun.basic_japanese.home.HomeFragment
 import com.sun.basic_japanese.kanjiadvance.KanjiAdvanceFragment
 import com.sun.basic_japanese.kanjibasic.KanjiBasicFragment
+import com.sun.basic_japanese.kanjidetail.KanjiAdvanceDetailFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),
     HomeFragment.OnHomeFragmentInteractionListener,
     KanjiBasicFragment.OnKanjiBasicFragmentInteractionListener,
     KanjiAdvanceFragment.OnKanjiAdvanceFragmentInteractionListener,
+    KanjiAdvanceDetailFragment.OnKanjiDetailFragmentInteractionListener,
     HasNavigationManager {
 
     private lateinit var navigationManager: NavigationManager
@@ -37,6 +39,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun setCurrentFragment(fragment: BaseFragment) {
         currentFragment = fragment
+    }
+
+    override fun scroll(input: Int) {
+        mainContainer.fullScroll(input)
     }
 
     override fun provideNavigationManager() = navigationManager

@@ -106,6 +106,13 @@ class KanjiLocalDataSource private constructor(
         }, callback).execute(kanjiAdvance)
     }
 
+    override fun getStrokeOrder(input: String, callback: OnDataLoadedCallback<String>) {
+        LoadDataAsync(object : LocalDataHandler<String, String> {
+            override fun execute(vararg params: String): String =
+                database.getStrokeOrder(params[0])
+        }, callback).execute(input)
+    }
+
     companion object {
 
         @Volatile
