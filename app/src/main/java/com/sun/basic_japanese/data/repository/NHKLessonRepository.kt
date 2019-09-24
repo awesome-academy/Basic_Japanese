@@ -8,6 +8,7 @@ import com.sun.basic_japanese.data.source.OnDataLoadedCallback
 class NHKLessonRepository(
     private val localDataSource: NHKLessonDataSource.Local
 ) : NHKLessonDataSource.Local {
+
     override fun getAllNHKLessonsThumbnails(callback: OnDataLoadedCallback<NHKLessonsThumbnailsResponse>) {
         localDataSource.getAllNHKLessonsThumbnails(callback)
     }

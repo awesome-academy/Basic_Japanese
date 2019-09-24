@@ -9,17 +9,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sun.basic_japanese.R
+import com.sun.basic_japanese.`interface`.RecyclerViewItemClickListener
 import com.sun.basic_japanese.audiolessons.adapter.AudioLessonsRecyclerAdapter
+import com.sun.basic_japanese.audiolessons.lessondetail.AudioLessonDetailFragment
+import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.AUDIO_LESSONS_COLUMN_NUMBER
+import com.sun.basic_japanese.data.model.FlashCardsMessage
 import com.sun.basic_japanese.data.model.NHKLesson
 import com.sun.basic_japanese.data.model.NHKLessonWithThumbnail
 import com.sun.basic_japanese.data.repository.NHKLessonRepository
 import com.sun.basic_japanese.data.source.local.AppDatabase
 import com.sun.basic_japanese.data.source.local.NHKLessonLocalDataSource
+import com.sun.basic_japanese.flashcard.allpages.FlashCardFragment
 import kotlinx.android.synthetic.main.fragment_audio_lessons.*
 
-class AudioLessonsFragment : Fragment(),
-    AudioLessonsContract.View {
+class AudioLessonsFragment : BaseFragment(),
+    AudioLessonsContract.View,
+    RecyclerViewItemClickListener {
 
     private var audioLessonsPresenter: AudioLessonsContract.Presenter? = null
     private var audioLessons = listOf<NHKLesson>()
@@ -50,11 +56,17 @@ class AudioLessonsFragment : Fragment(),
         val lessonsWithThumbnail = audioLessons.mapIndexed { index, nhkLesson ->
             NHKLessonWithThumbnail(nhkLesson, lessonsThumbnails[index])
         }
-        val audioLessonsAdapter = AudioLessonsRecyclerAdapter(lessonsWithThumbnail)
+        val audioLessonsAdapter = AudioLessonsRecyclerAdapter(lessonsWithThumbnail, this)
         recyclerAudioLessons.apply {
             layoutManager = gridLayoutManager
             adapter = audioLessonsAdapter
         }
+    }
+
+    override fun onRecyclerViewItemClick(currentPosition: Int) {
+        getNavigationManager().open(
+            AudioLessonDetailFragment.newInstance(audioLessons[currentPosition])
+        )
     }
 
     private fun initPresenter() {

@@ -1,7 +1,6 @@
 package com.sun.basic_japanese.data.source
 
-import com.sun.basic_japanese.data.model.NHKLessonsResponse
-import com.sun.basic_japanese.data.model.NHKLessonsThumbnailsResponse
+import com.sun.basic_japanese.data.model.*
 
 interface NHKLessonDataSource {
     interface Local {

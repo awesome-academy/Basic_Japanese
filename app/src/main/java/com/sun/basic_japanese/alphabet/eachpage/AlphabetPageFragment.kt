@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sun.basic_japanese.R
+import com.sun.basic_japanese.`interface`.RecyclerViewItemClickListener
 import com.sun.basic_japanese.alphabet.adapter.AlphabetRecyclerAdapter
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.ALPHABET_COLUMN_NUMBER
@@ -21,7 +22,7 @@ import kotlinx.android.synthetic.main.fragment_page_alphabet.*
 
 class AlphabetPageFragment : BaseFragment(),
     AlphabetPageContract.View,
-    AlphabetRecyclerAdapter.RecyclerViewClickListener {
+    RecyclerViewItemClickListener {
 
     private var pagePresenter: AlphabetPageContract.Presenter? = null
     private var alphabetType: String? = null

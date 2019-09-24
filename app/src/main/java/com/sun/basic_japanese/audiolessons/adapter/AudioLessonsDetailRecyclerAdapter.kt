@@ -4,44 +4,47 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.sun.basic_japanese.R
 import com.sun.basic_japanese.`interface`.RecyclerViewItemClickListener
-import com.sun.basic_japanese.data.model.NHKLessonWithThumbnail
-import kotlinx.android.synthetic.main.item_audio_lesson.view.*
+import com.sun.basic_japanese.data.model.Dialogue
+import com.sun.basic_japanese.data.model.DialogueWithAudio
+import kotlinx.android.synthetic.main.item_lesson_dialog.view.*
 
-class AudioLessonsRecyclerAdapter(
-    private val lessons: List<NHKLessonWithThumbnail>,
+class AudioLessonsDetailRecyclerAdapter(
+    private val dialogues: List<DialogueWithAudio>,
     private val listener: RecyclerViewItemClickListener
-) : RecyclerView.Adapter<AudioLessonsRecyclerAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<AudioLessonsDetailRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.item_audio_lesson, parent, false)
+        val view = inflater.inflate(R.layout.item_lesson_dialog, parent, false)
         return ViewHolder(view, listener)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bindData(lessons[position])
+        viewHolder.bindData(dialogues[position].dialogue)
     }
 
-    override fun getItemCount() = lessons.size
+    override fun getItemCount() = dialogues.size
 
     class ViewHolder(
         itemView: View,
         private val listener: RecyclerViewItemClickListener
     ) : RecyclerView.ViewHolder(itemView) {
-        private val textLessonTitle: TextView? = itemView.textLessonTitle
-        private val imageLessonThumbnail: ImageView? = itemView.imageLessonThumbnail
 
         init {
             setClickEvent()
         }
 
-        fun bindData(lesson: NHKLessonWithThumbnail) {
-            textLessonTitle?.text = lesson.lesson.title
-            imageLessonThumbnail?.setImageDrawable(lesson.thumbnail)
+        fun bindData(dialogue: Dialogue) {
+            itemView.apply {
+                textPersonNameJapanese?.text = dialogue.kanaName
+                textPersonNameInternational?.text = dialogue.romajiName
+                textDialogJapanese?.text = dialogue.kana
+                textDialogInternational?.text = dialogue.romaji
+                textDialogInternational?.text = dialogue.vn
+            }
         }
 
         private fun setClickEvent() {

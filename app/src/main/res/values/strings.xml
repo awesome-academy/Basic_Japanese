@@ -21,5 +21,6 @@
     <string name="title_select_dialog">Lựa chọn bài học</string>
     <string name="title_lesson">Bài</string>
     <string name="title_favorite">Yêu thích</string>
+    <string name="title_grammar">Ngữ pháp</string>
 
 </resources>

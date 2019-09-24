@@ -1,6 +1,5 @@
 package com.sun.basic_japanese.alphabet.adapter
 
-import android.content.Context
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -8,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.sun.basic_japanese.R
+import com.sun.basic_japanese.`interface`.RecyclerViewItemClickListener
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.EMPTY_STRING
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.HIRAGANA
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.REMEMBERED
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.item_word.view.*
 class AlphabetRecyclerAdapter(
     private val alphabetItems: List<Alphabet?>,
     private val alphabetType: String?,
-    private val listener: RecyclerViewClickListener
+    private val listener: RecyclerViewItemClickListener
 ) : RecyclerView.Adapter<AlphabetRecyclerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, position: Int): ViewHolder {
@@ -34,7 +34,7 @@ class AlphabetRecyclerAdapter(
 
     class ViewHolder(
         itemView: View,
-        private val listener: RecyclerViewClickListener
+        private val listener: RecyclerViewItemClickListener
     ) : RecyclerView.ViewHolder(itemView) {
 
         private val context = itemView.context
@@ -80,9 +80,5 @@ class AlphabetRecyclerAdapter(
                 listener.onRecyclerViewItemClick(adapterPosition)
             }
         }
-    }
-
-    interface RecyclerViewClickListener {
-        fun onRecyclerViewItemClick(currentPosition: Int)
     }
 }

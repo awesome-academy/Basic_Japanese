@@ -26,4 +26,5 @@
     <dimen name="dp_580">580dp</dimen>
     <dimen name="dp_320">320dp</dimen>
     <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_300">300dp</dimen>
 </resources>
