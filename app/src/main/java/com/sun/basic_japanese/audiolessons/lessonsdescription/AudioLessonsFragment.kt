@@ -2,7 +2,6 @@ package com.sun.basic_japanese.audiolessons.lessonsdescription
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -14,13 +13,11 @@ import com.sun.basic_japanese.audiolessons.adapter.AudioLessonsRecyclerAdapter
 import com.sun.basic_japanese.audiolessons.lessondetail.AudioLessonDetailFragment
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.AUDIO_LESSONS_COLUMN_NUMBER
-import com.sun.basic_japanese.data.model.FlashCardsMessage
 import com.sun.basic_japanese.data.model.NHKLesson
 import com.sun.basic_japanese.data.model.NHKLessonWithThumbnail
 import com.sun.basic_japanese.data.repository.NHKLessonRepository
 import com.sun.basic_japanese.data.source.local.AppDatabase
 import com.sun.basic_japanese.data.source.local.NHKLessonLocalDataSource
-import com.sun.basic_japanese.flashcard.allpages.FlashCardFragment
 import kotlinx.android.synthetic.main.fragment_audio_lessons.*
 
 class AudioLessonsFragment : BaseFragment(),
