@@ -1,5 +1,7 @@
 package com.sun.basic_japanese.audiolessons.lessondetail
 
+import android.graphics.drawable.Drawable
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -10,11 +12,11 @@ import com.sun.basic_japanese.`interface`.RecyclerViewItemClickListener
 import com.sun.basic_japanese.audiolessons.adapter.AudioLessonsDetailRecyclerAdapter
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.constants.BasicJapaneseConstants.LESSON
-import com.sun.basic_japanese.data.model.DialogueWithAudio
+import com.sun.basic_japanese.data.model.Dialogue
+import com.sun.basic_japanese.data.model.NHKAudioResponse
 import com.sun.basic_japanese.data.model.NHKLesson
-import com.sun.basic_japanese.data.repository.NHKLessonRepository
-import com.sun.basic_japanese.data.source.local.AppDatabase
-import com.sun.basic_japanese.data.source.local.NHKLessonLocalDataSource
+import com.sun.basic_japanese.data.source.local.AssetManager
+import com.sun.basic_japanese.data.source.local.LessonLocalAsset
 import kotlinx.android.synthetic.main.fragment_audio_lesson_detail.*
 import kotlinx.android.synthetic.main.fragment_audio_lesson_detail.view.*
 
@@ -23,19 +25,18 @@ class AudioLessonDetailFragment :
     AudioLessonDetailContract.View,
     RecyclerViewItemClickListener {
 
-    private val local by lazy {
-        context?.let { NHKLessonLocalDataSource.getInstance(AppDatabase.getInstance(it)) }
+    private val lessonLocalAsset by lazy {
+        context?.let { LessonLocalAsset.getInstance(AssetManager.getInstance(it)) }
     }
-
-    private val nhkRepository by lazy {
-        local?.let { NHKLessonRepository.getInstance(it) }
-    }
-
     private val lessonDetailPresenter by lazy {
-        nhkRepository?.let { AudioLessonDetailPresenter(this, it) }
+        lessonLocalAsset?.let { AudioLessonDetailPresenter(this, it) }
     }
+
+    private val lessonAudioPlayer: MediaPlayer by lazy { MediaPlayer() }
 
     private var audioLesson: NHKLesson? = null
+
+    private var dialogues: List<Dialogue>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,9 +53,20 @@ class AudioLessonDetailFragment :
         super.onViewCreated(view, savedInstanceState)
         displayLessonDescription(view)
         audioLesson?.dialogues?.let { lessonDetailPresenter?.setDialogue(it) }
+        audioLesson?.image?.let { lessonDetailPresenter?.getLessonThumbnail(it) }
+        setEventClick()
     }
 
-    override fun showDialogueData(dialogues: List<DialogueWithAudio>) {
+    override fun onBackPressed(): Boolean {
+        if (lessonAudioPlayer.isPlaying) {
+            lessonAudioPlayer.stop()
+        }
+        lessonAudioPlayer.reset()
+        return super.onBackPressed()
+    }
+
+    override fun showDialogueData(dialogues: List<Dialogue>) {
+        this.dialogues = dialogues
         val linearLayoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.VERTICAL,
@@ -67,8 +79,36 @@ class AudioLessonDetailFragment :
         }
     }
 
+    override fun setLessonThumbnail(thumbnail: Drawable) {
+        view?.imageLessonThumbnail?.setImageDrawable(thumbnail)
+    }
+
+    override fun setupAudioPlayer(lessonAudio: NHKAudioResponse) {
+        lessonAudioPlayer.apply {
+            if (isPlaying) stop()
+            reset()
+            setDataSource(
+                lessonAudio.audioDescriptor.fileDescriptor,
+                lessonAudio.audioDescriptor.startOffset,
+                lessonAudio.audioDescriptor.length
+            )
+            prepare()
+            start()
+        }
+    }
+
     override fun onRecyclerViewItemClick(currentPosition: Int) {
-        TODO()
+        dialogues?.get(currentPosition)?.audio?.let {
+            lessonDetailPresenter?.getLessonAudio(it)
+        }
+    }
+
+    private fun setEventClick() {
+        buttonPlayLessonAudio?.setOnClickListener {
+            audioLesson?.audio?.let {
+                lessonDetailPresenter?.getLessonAudio(it)
+            }
+        }
     }
 
     private fun displayLessonDescription(view: View) {
