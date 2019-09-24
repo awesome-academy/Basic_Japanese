@@ -7,14 +7,18 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import com.sun.basic_japanese.R
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.FragmentInteractionListener
 import com.sun.basic_japanese.data.model.KanjiBasic
+import com.sun.basic_japanese.data.model.KanjiAdvanceMessage
+import com.sun.basic_japanese.data.model.KanjiBasicMessage
 import com.sun.basic_japanese.data.repository.KanjiRepository
 import com.sun.basic_japanese.data.source.local.AppDatabase
 import com.sun.basic_japanese.data.source.local.KanjiLocalDataSource
 import com.sun.basic_japanese.data.source.remote.KanjiRemoteDataSource
+import com.sun.basic_japanese.kanjidetail.KanjiBasicDetailFragment
 import com.sun.basic_japanese.util.Constants
 import com.sun.basic_japanese.util.Extensions.showToast
 import com.sun.basic_japanese.widget.SelectLessonDialogFragment
@@ -49,6 +53,7 @@ class KanjiBasicFragment @SuppressLint("ValidFragment") private constructor() : 
     private val selectDialog = SelectLessonDialogFragment.newInstance(Constants.KANJI_BASIC)
 
     private var listener: OnKanjiBasicFragmentInteractionListener? = null
+    private var kanjiBasicList = listOf<KanjiBasic>()
     private var currentLesson = 1
 
     override fun onAttach(context: Context?) {
@@ -75,6 +80,7 @@ class KanjiBasicFragment @SuppressLint("ValidFragment") private constructor() : 
 
     override fun showKanjiBasicData(kanjiBasicList: List<KanjiBasic>) {
         kanjiBasicRecyclerAdapter.updateData(kanjiBasicList)
+        this.kanjiBasicList = kanjiBasicList
     }
 
     override fun showError(message: String) {
@@ -94,7 +100,11 @@ class KanjiBasicFragment @SuppressLint("ValidFragment") private constructor() : 
     }
 
     override fun showKanjiBasicDetail(currentPosition: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        getNavigationManager().open(
+            KanjiBasicDetailFragment.newInstance(
+                KanjiBasicMessage(kanjiBasicList, currentPosition)
+            )
+        )
     }
 
     override fun updateFavoriteKanji(kanjiBasic: KanjiBasic) {

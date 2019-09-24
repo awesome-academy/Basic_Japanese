@@ -14,7 +14,9 @@ interface KanjiDetailContract {
 
     interface Presenter: BasePresenter {
         fun getStrokeOrder(input: String)
-        
+
+        fun updateFavoriteKanjiBasic(kanjiBasic: KanjiBasic)
+
         fun updateFavoriteKanjiAdvance(kanjiAdvance: KanjiAdvance)
     }
 }
