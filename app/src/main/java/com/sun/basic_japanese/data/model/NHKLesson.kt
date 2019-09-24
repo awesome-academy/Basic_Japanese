@@ -1,7 +1,10 @@
 package com.sun.basic_japanese.data.model
 
 import android.database.Cursor
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class NHKLesson(
     val id: Int,
     val title: String,
@@ -10,7 +13,7 @@ data class NHKLesson(
     val audio: String,
     val grammar: String,
     val dialogues: String
-){
+) : Parcelable {
     constructor(cursor: Cursor) : this(
         cursor.getInt(cursor.getColumnIndex(DATABASE_TABLE_NHK_LESSON_COLUMN_ID)),
         cursor.getString(cursor.getColumnIndex(DATABASE_TABLE_NHK_LESSON_COLUMN_TITLE)),

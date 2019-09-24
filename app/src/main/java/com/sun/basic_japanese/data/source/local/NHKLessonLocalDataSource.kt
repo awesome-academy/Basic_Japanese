@@ -1,18 +1,17 @@
 package com.sun.basic_japanese.data.source.local
 
-import com.sun.basic_japanese.data.model.NHKLessonsResponse
-import com.sun.basic_japanese.data.model.NHKLessonsThumbnailsResponse
+import com.sun.basic_japanese.data.model.*
 import com.sun.basic_japanese.data.source.NHKLessonDataSource
 import com.sun.basic_japanese.data.source.OnDataLoadedCallback
 import com.sun.basic_japanese.util.Constants
 
 class NHKLessonLocalDataSource(private val appDatabase: AppDatabase) : NHKLessonDataSource.Local {
+
     override fun getAllNHKLessonsThumbnails(callback: OnDataLoadedCallback<NHKLessonsThumbnailsResponse>) {
         LoadDataAsync(object : LocalDataHandler<String, NHKLessonsThumbnailsResponse> {
             override fun execute(vararg params: String): NHKLessonsThumbnailsResponse =
                 NHKLessonsThumbnailsResponse(appDatabase.getNHKLessonsThumbnails())
         }, callback).execute(Constants.EMPTY_STRING)
-        //LoadDataAsync(callback).execute(NHKLessonsThumbnailsResponse(appDatabase.getNHKLessonsThumbnails()))
     }
 
     override fun getAllNHKLessons(callback: OnDataLoadedCallback<NHKLessonsResponse>) {
