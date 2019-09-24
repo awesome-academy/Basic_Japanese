@@ -1,4 +1,4 @@
-package com.sun.basic_japanese.kanji_basic
+package com.sun.basic_japanese.kanjibasic
 
 import com.sun.basic_japanese.base.BasePresenter
 import com.sun.basic_japanese.base.BaseView
