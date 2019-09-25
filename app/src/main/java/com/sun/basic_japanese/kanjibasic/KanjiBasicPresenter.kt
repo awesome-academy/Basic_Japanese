@@ -1,4 +1,4 @@
-package com.sun.basic_japanese.kanji_basic
+package com.sun.basic_japanese.kanjibasic
 
 import com.sun.basic_japanese.data.model.KanjiBasic
 import com.sun.basic_japanese.data.model.KanjiBasicResponse
@@ -11,7 +11,7 @@ class KanjiBasicPresenter(
 ) : KanjiBasicContract.Presenter {
 
     override fun getKanjiBasicData(lesson: Int) {
-        kanjiRepository.getKanjiBasicRemote(
+        kanjiRepository.getKanjiBasicLocal(
             lesson.toString(),
             object : OnDataLoadedCallback<KanjiBasicResponse> {
                 override fun onSuccess(data: KanjiBasicResponse) {

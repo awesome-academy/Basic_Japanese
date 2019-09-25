@@ -1,4 +1,4 @@
-package com.sun.basic_japanese.kanji_advance
+package com.sun.basic_japanese.kanjiadvance
 
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView

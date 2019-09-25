@@ -18,10 +18,15 @@ object Constants {
     const val CHARACTER_SPLIT_1 = '※'
     const val CHARACTER_SPLIT_2 = '∴'
     const val CHARACTER_SPLIT_3 = ','
-    const val KANJI_BASIC = "Kanji basic"
-    const val KANJI_ADVANCE = "Kanji advance"
+    const val KANJI_BASIC = "kanji_basic"
+    const val KANJI_ADVANCE = "kanji_advance"
     const val KANJI_BASIC_MIN_LESSON = 0
     const val KANJI_BASIC_MAX_LESSON = 32
     const val KANJI_ADVANCE_MIN_LESSON = 0
     const val KANJI_ADVANCE_MAX_LESSON = 20
+    const val JLPT_TEST_COUNT = 15
+    const val LOAD_DATA = "load_data"
+    const val LOAD_KANJI_BASIC_DATA = "load_kanji_basic_data"
+    const val LOAD_KANJI_ADVANCE_DATA = "load_kanji_advance_data"
+    const val LOAD_JLPT_TEST_DATA = "load_jlpt_test_data"
 }

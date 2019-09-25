@@ -8,17 +8,6 @@
     android:background="@drawable/fragment_background">
 
     <TextView
-        android:id="@+id/textTitleLesson"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/color_text_primary"
-        android:textSize="@dimen/sp_16"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textPersonNameJapanese"
         android:layout_width="@dimen/dp_64"
         android:layout_height="@dimen/dp_32"

@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.sun.basic_japanese.R
 import com.sun.basic_japanese.base.BaseViewHolder
-import kotlinx.android.synthetic.main.item_lesson_dialog.view.*
+import kotlinx.android.synthetic.main.item_lesson_kanji.view.*
 
 class KanjiLessonRecyclerAdapter(
     private val listener: OnKanjiLessonItemClickListener,
@@ -15,7 +15,7 @@ class KanjiLessonRecyclerAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, type: Int): ViewHolder {
         val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_lesson_dialog, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_lesson_kanji, parent, false)
         return ViewHolder(itemView, listener)
     }
 

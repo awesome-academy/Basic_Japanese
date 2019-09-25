@@ -22,7 +22,7 @@ class AppDatabase private constructor(
 ) {
 
     private val preferences = context.getSharedPreferences(
-        "${context.packageName}.database_versions",
+        "${context.packageName}${Constants.SETTING}",
         Context.MODE_PRIVATE
     )
 
@@ -257,7 +257,7 @@ class AppDatabase private constructor(
                     put(KanjiBasic.JSON_KEY_WORD, kanjiList[index].word)
                     put(KanjiBasic.JSON_KEY_VIET_MEAN, kanjiList[index].vietMean)
                     put(KanjiBasic.JSON_KEY_CHINA_MEAN, kanjiList[index].chinaMean)
-                    put(KanjiBasic.JSON_KEY_ONJOMI, kanjiList[index].id)
+                    put(KanjiBasic.JSON_KEY_ONJOMI, kanjiList[index].onjomi)
                     put(KanjiBasic.JSON_KEY_ROMAJI_ONJOMI, kanjiList[index].romajiOnjomi)
                     put(KanjiBasic.JSON_KEY_KUNJOMI, kanjiList[index].kunjomi)
                     put(KanjiBasic.JSON_KEY_ROMAJI_KUNJOMI, kanjiList[index].romajiKunjomi)
@@ -283,7 +283,15 @@ class AppDatabase private constructor(
     @Synchronized
     fun updateKanjiAdvanceLocal(kanjiList: List<KanjiAdvance>): Boolean {
         val db = writableDatabase
-        val cursor = db.query(DATABASE_TABLE_KANJI_ADVANCE, null, null, null, null, null, null)
+        val cursor = db.query(
+            DATABASE_TABLE_KANJI_ADVANCE,
+            null,
+            "${KanjiAdvance.JSON_KEY_ID} = ?",
+            arrayOf(kanjiList[0].id.toString()),
+            null,
+            null,
+            null
+        )
         val values = ContentValues()
 
         if (cursor != null && !cursor.moveToFirst()) {
