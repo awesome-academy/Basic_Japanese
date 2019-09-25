@@ -7,37 +7,34 @@
     android:gravity="center"
     android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/buttonGrammar"
-        style="@style/Widget.AppCompat.Button.Borderless"
+    <TextView
+        android:id="@+id/textGrammar"
         android:layout_width="@dimen/dp_120"
         android:layout_height="match_parent"
         android:layout_margin="4dp"
         android:gravity="center"
         android:text="@string/title_test_grammar"
-        android:textColor="@color/color_text_primary"
+        android:textColor="@color/color_accent"
         android:textSize="@dimen/sp_16" />
 
-    <Button
-        android:id="@+id/buttonVocabulary"
-        style="@style/Widget.AppCompat.Button.Borderless"
+    <TextView
+        android:id="@+id/textVocabulary"
         android:layout_width="@dimen/dp_120"
         android:layout_height="match_parent"
         android:layout_margin="4dp"
         android:gravity="center"
         android:text="@string/title_test_vocabulary"
-        android:textColor="@color/color_text_primary"
+        android:textColor="@color/color_accent"
         android:textSize="@dimen/sp_16" />
 
-    <Button
-        android:id="@+id/buttonKanji"
-        style="@style/Widget.AppCompat.Button.Borderless"
+    <TextView
+        android:id="@+id/textKanji"
         android:layout_width="@dimen/dp_120"
         android:layout_height="match_parent"
         android:layout_margin="4dp"
         android:gravity="center"
         android:text="@string/title_test_kanji"
-        android:textColor="@color/color_text_primary"
+        android:textColor="@color/color_accent"
         android:textSize="@dimen/sp_16" />
 
 </LinearLayout>
