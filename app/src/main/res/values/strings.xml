@@ -34,5 +34,8 @@
     <string name="title_corrected_answers">Số đáp án đúng:</string>
     <string name="title_wrong_answers">Số đáp án sai:</string>
     <string name="title_mark">Điểm:</string>
+    <string name="title_progress_load_kanji_basic_data">Đang tải dữ liệu kanji cơ bản</string>
+    <string name="title_progress_load_kanji_advance_data">Đang tải dữ liệu kanji nâng cao</string>
+    <string name="title_progress_load_jlpt_test_data">Đang tải dữ liệu jlpt test</string>
 
 </resources>

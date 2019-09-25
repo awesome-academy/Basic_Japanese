@@ -8,6 +8,7 @@ import android.util.Base64
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import com.sun.basic_japanese.R
 import com.sun.basic_japanese.data.model.DataRequest
 import com.sun.basic_japanese.data.model.Example
 import java.io.*
@@ -38,16 +39,19 @@ object Extensions {
         }.toString()
     }
 
-    @Throws(IOException::class)
     fun String.parseImage(): String = this.let {
-        val imageUrl = DataRequest(
-            Constants.SCHEME_HTTP,
-            Constants.AUTHORITY_MINNA_MAZIL,
-            listOf(Constants.PATH_IMAGE, Constants.PATH_IKANJI, "$it.jpg")
-        ).toUrl()
-        val connection = URL(imageUrl).openConnection()
-        val inputStream = connection.getInputStream()
-        Base64.encodeToString(inputStream.readBytes(), Base64.DEFAULT)
+        try {
+            val imageUrl = DataRequest(
+                Constants.SCHEME_HTTP,
+                Constants.AUTHORITY_MINNA_MAZIL,
+                listOf(Constants.PATH_IMAGE, Constants.PATH_IKANJI, "$it.jpg")
+            ).toUrl()
+            val connection = URL(imageUrl).openConnection()
+            val inputStream = connection.getInputStream()
+            Base64.encodeToString(inputStream.readBytes(), Base64.DEFAULT)
+        } catch (e: IOException) {
+            Constants.EMPTY_STRING
+        }
     }
 
     fun MutableList<Example>.parseExamples(input: String) = this.apply {
@@ -59,9 +63,13 @@ object Extensions {
     }
 
     fun ImageView.setImage(input: String) = this.apply {
-        val byteArray = Base64.decode(input, Base64.DEFAULT)
-        val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
-        setImageBitmap(bitmap)
+        if (input.isNotEmpty()) {
+            val byteArray = Base64.decode(input, Base64.DEFAULT)
+            val bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size)
+            setImageBitmap(bitmap)
+        } else {
+            setImageResource(R.mipmap.ic_launcher)
+        }
     }
 
     fun TextView.setHtmlText(input: String) = this.apply {

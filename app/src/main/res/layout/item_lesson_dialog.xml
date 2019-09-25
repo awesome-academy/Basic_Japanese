@@ -8,17 +8,6 @@
     android:background="@drawable/fragment_background">
 
     <TextView
-        android:id="@+id/textTitleLesson"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@color/color_text_primary"
-        android:textSize="@dimen/sp_16"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/textPersonNameJapanese"
         android:layout_width="@dimen/dp_64"
         android:layout_height="@dimen/dp_32"
@@ -42,9 +31,9 @@
 
     <TextView
         android:id="@+id/textDialogJapanese"
-        android:layout_width="@dimen/dp_300"
-        android:layout_height="@dimen/dp_48"
-        android:layout_marginStart="@dimen/dp_32"
+        android:layout_width="@dimen/dp_320"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginStart="@dimen/dp_8"
         android:layout_marginTop="@dimen/dp_8"
         android:textColor="@color/color_accent"
         android:textSize="@dimen/sp_16"
@@ -53,9 +42,9 @@
 
     <TextView
         android:id="@+id/textDialogInternational"
-        android:layout_width="@dimen/dp_300"
-        android:layout_height="@dimen/dp_48"
-        android:layout_marginStart="@dimen/dp_32"
+        android:layout_width="@dimen/dp_320"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginStart="@dimen/dp_8"
         android:textColor="@color/color_text_primary"
         android:textSize="@dimen/sp_16"
         app:layout_constraintBottom_toTopOf="@+id/textDialogVietnamese"
@@ -64,9 +53,9 @@
 
     <TextView
         android:id="@+id/textDialogVietnamese"
-        android:layout_width="@dimen/dp_300"
-        android:layout_height="@dimen/dp_32"
-        android:layout_marginStart="@dimen/dp_32"
+        android:layout_width="@dimen/dp_320"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginStart="@dimen/dp_8"
         android:layout_marginBottom="@dimen/dp_8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textPersonNameInternational" />

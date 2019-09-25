@@ -1,4 +1,4 @@
-package com.sun.basic_japanese.kanji_basic
+package com.sun.basic_japanese.kanjibasic
 
 import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
@@ -12,6 +12,7 @@ import com.sun.basic_japanese.data.model.KanjiBasic
 import com.sun.basic_japanese.util.Constants
 import com.sun.basic_japanese.util.Extensions.setHtmlText
 import com.sun.basic_japanese.util.Extensions.setImage
+import com.sun.basic_japanese.util.Extensions.getStringBySplit
 import kotlinx.android.synthetic.main.item_kanji_basic.view.*
 
 class KanjiBasicRecyclerAdapter(
@@ -55,7 +56,7 @@ class KanjiBasicRecyclerAdapter(
             super.onBindData(itemData)
             itemView.apply {
                 textKanjiBasicWord?.text = itemData.word
-                textKanjiBasicChinaMean?.text = itemData.chinaMean
+                textKanjiBasicChinaMean?.text = itemData.chinaMean.getStringBySplit(Constants.CHARACTER_SPLIT_3)
                 textKanjiBasicOnjomi?.text = itemData.onjomi
                 textKanjiBasicKunjomi?.text = itemData.kunjomi
                 textKanjiBasicRemember?.setHtmlText(itemData.remember)

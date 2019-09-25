@@ -1,4 +1,4 @@
-package com.sun.basic_japanese.kanji_advance
+package com.sun.basic_japanese.kanjiadvance
 
 import com.sun.basic_japanese.data.model.KanjiAdvanceResponse
 import com.sun.basic_japanese.data.repository.KanjiRepository
@@ -10,7 +10,7 @@ class KanjiAdvancePresenter(
 ) : KanjiAdvanceContract.Presenter {
 
     override fun getKanjiAdvanceData(from: Int, to: Int) {
-        kanjiRepository.getKanjiAdvanceRemote(
+        kanjiRepository.getKanjiAdvanceLocal(
             from.toString(),
             to.toString(),
             object : OnDataLoadedCallback<KanjiAdvanceResponse> {

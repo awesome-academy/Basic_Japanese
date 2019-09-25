@@ -17,4 +17,5 @@ object BasicJapaneseConstants {
     const val ALPHABET_AUDIO_PATH = "alphabetsaudio/"
     const val LESSON_AUDIO_PATH = "lessonsaudio/"
     const val AUDIO_LESSONS_COLUMN_NUMBER = 2
+    const val TEST_CATEGORY = "category"
 }

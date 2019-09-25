@@ -7,11 +7,10 @@ import android.view.ViewGroup
 import com.sun.basic_japanese.R
 import com.sun.basic_japanese.`interface`.RecyclerViewItemClickListener
 import com.sun.basic_japanese.data.model.Dialogue
-import com.sun.basic_japanese.data.model.DialogueWithAudio
 import kotlinx.android.synthetic.main.item_lesson_dialog.view.*
 
 class AudioLessonsDetailRecyclerAdapter(
-    private val dialogues: List<DialogueWithAudio>,
+    private val dialogues: List<Dialogue>,
     private val listener: RecyclerViewItemClickListener
 ) : RecyclerView.Adapter<AudioLessonsDetailRecyclerAdapter.ViewHolder>() {
 
@@ -22,7 +21,7 @@ class AudioLessonsDetailRecyclerAdapter(
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bindData(dialogues[position].dialogue)
+        viewHolder.bindData(dialogues[position])
     }
 
     override fun getItemCount() = dialogues.size
@@ -42,7 +41,7 @@ class AudioLessonsDetailRecyclerAdapter(
                 textPersonNameInternational?.text = dialogue.romajiName
                 textDialogJapanese?.text = dialogue.kana
                 textDialogInternational?.text = dialogue.romaji
-                textDialogInternational?.text = dialogue.vn
+                textDialogVietnamese?.text = dialogue.vn
             }
         }
 
