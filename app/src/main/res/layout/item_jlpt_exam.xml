@@ -3,37 +3,38 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/dp_64"
+    android:background="@drawable/fragment_background"
     android:gravity="center"
     android:orientation="horizontal">
 
     <TextView
+        android:id="@+id/textGrammar"
         android:layout_width="@dimen/dp_120"
         android:layout_height="match_parent"
         android:layout_margin="4dp"
-        android:background="@drawable/fragment_background"
         android:gravity="center"
         android:text="@string/title_test_grammar"
         android:textColor="@color/color_accent"
-        android:textSize="@dimen/sp_18" />
+        android:textSize="@dimen/sp_16" />
 
     <TextView
+        android:id="@+id/textVocabulary"
         android:layout_width="@dimen/dp_120"
         android:layout_height="match_parent"
         android:layout_margin="4dp"
-        android:background="@drawable/fragment_background"
         android:gravity="center"
         android:text="@string/title_test_vocabulary"
         android:textColor="@color/color_accent"
-        android:textSize="@dimen/sp_18" />
+        android:textSize="@dimen/sp_16" />
 
     <TextView
+        android:id="@+id/textKanji"
         android:layout_width="@dimen/dp_120"
         android:layout_height="match_parent"
         android:layout_margin="4dp"
-        android:background="@drawable/fragment_background"
         android:gravity="center"
         android:text="@string/title_test_kanji"
         android:textColor="@color/color_accent"
-        android:textSize="@dimen/sp_18" />
+        android:textSize="@dimen/sp_16" />
 
 </LinearLayout>

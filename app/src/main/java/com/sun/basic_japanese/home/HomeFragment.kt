@@ -10,6 +10,7 @@ import com.sun.basic_japanese.alphabet.allpages.AlphabetFragment
 import com.sun.basic_japanese.audiolessons.lessonsdescription.AudioLessonsFragment
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.FragmentInteractionListener
+import com.sun.basic_japanese.jlpttest.JLPTFragment
 import com.sun.basic_japanese.kanjiadvance.KanjiAdvanceFragment
 import com.sun.basic_japanese.kanjibasic.KanjiBasicFragment
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -45,6 +46,9 @@ class HomeFragment : BaseFragment() {
         }
         layoutKanjiAdvance.setOnClickListener {
             getNavigationManager().open(KanjiAdvanceFragment.newInstance())
+        }
+        layoutTest.setOnClickListener {
+            getNavigationManager().open(JLPTFragment.newInstance())
         }
     }
 
@@ -135,4 +139,3 @@ class HomeFragment : BaseFragment() {
         fun newInstance() = HomeFragment()
     }
 }
-

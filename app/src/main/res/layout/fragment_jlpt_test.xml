@@ -6,79 +6,6 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/layoutTestN1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_64"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_24"
-            android:layout_marginBottom="@dimen/dp_8"
-            android:text="@string/title_n1"
-            android:textSize="@dimen/sp_18" />
-
-        <include layout="@layout/item_jlpt_exam" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutTestN2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_8"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_24"
-            android:layout_marginBottom="@dimen/dp_8"
-            android:text="@string/title_n2"
-            android:textSize="@dimen/sp_18" />
-
-        <include layout="@layout/item_jlpt_exam" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutTestN3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_8"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_24"
-            android:layout_marginBottom="@dimen/dp_8"
-            android:text="@string/title_n3"
-            android:textSize="@dimen/sp_18" />
-
-        <include layout="@layout/item_jlpt_exam" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutTestN4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/dp_8"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_24"
-            android:layout_marginBottom="@dimen/dp_8"
-            android:text="@string/title_n4"
-            android:textSize="@dimen/sp_18" />
-
-        <include layout="@layout/item_jlpt_exam" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutTestN5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dp_8"
@@ -92,7 +19,85 @@
             android:text="@string/title_n5"
             android:textSize="@dimen/sp_18" />
 
-        <include layout="@layout/item_jlpt_exam" />
+        <include
+            android:id="@+id/layoutTestN5"
+            layout="@layout/item_jlpt_exam" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:text="@string/title_n4"
+            android:textSize="@dimen/sp_18" />
+
+        <include
+            android:id="@+id/layoutTestN4"
+            layout="@layout/item_jlpt_exam" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:text="@string/title_n3"
+            android:textSize="@dimen/sp_18" />
+
+        <include
+            android:id="@+id/layoutTestN3"
+            layout="@layout/item_jlpt_exam" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:text="@string/title_n2"
+            android:textSize="@dimen/sp_18" />
+
+        <include
+            android:id="@+id/layoutTestN2"
+            layout="@layout/item_jlpt_exam" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_8"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginBottom="@dimen/dp_8"
+            android:text="@string/title_n1"
+            android:textSize="@dimen/sp_18" />
+
+        <include
+            android:id="@+id/layoutTestN1"
+            layout="@layout/item_jlpt_exam" />
     </LinearLayout>
 
 </LinearLayout>
