@@ -42,11 +42,10 @@ class AlphabetFragment : BaseFragment(), AlphabetContract.View {
             add(resources.getString(R.string.title_hiragana))
             add(resources.getString(R.string.title_katakana))
         }
-        fragmentManager?.let {
-            viewPagerAlphabet.adapter = PagerAdapter(it, gridFragments, tabLayoutTitles)
-        }
+        viewPagerAlphabet.adapter = PagerAdapter(childFragmentManager, gridFragments, tabLayoutTitles)
         tabLayoutAlphabet.setupWithViewPager(viewPagerAlphabet, true)
     }
+
     companion object {
 
         @JvmStatic
