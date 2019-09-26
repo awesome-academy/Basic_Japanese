@@ -1,9 +1,12 @@
 package com.sun.basic_japanese.data.model
 
 import android.database.Cursor
+import android.os.Parcelable
 import com.sun.basic_japanese.util.Constants
+import kotlinx.android.parcel.Parcelize
 import org.json.JSONObject
 
+@Parcelize
 class KanjiAdvance(
     override val id: Int,
     override val word: String,
@@ -18,7 +21,7 @@ class KanjiAdvance(
     override var favorite: String = Constants.FALSE,
     override var tag: String = Constants.FALSE
 
-) : Kanji() {
+) : Kanji(), Parcelable {
 
     constructor(jsonObject: JSONObject) : this(
         jsonObject.optInt(JSON_KEY_ID),

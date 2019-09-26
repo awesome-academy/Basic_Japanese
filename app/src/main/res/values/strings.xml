@@ -20,6 +20,13 @@
     <string name="title_kanji_kunjomi">kun:</string>
     <string name="title_select_dialog">Lựa chọn bài học</string>
     <string name="title_lesson">Bài</string>
+    <string name="title_kanji_detail_remember">Ghi nhớ</string>
+    <string name="title_kanji_detail_china_mean">Am hán</string>
+    <string name="title_kanji_detail_viet_mean">Nghĩa</string>
+    <string name="title_kanji_detail_onjomi">Onjomi</string>
+    <string name="title_kanji_detail_kunjomi">Kunjomi</string>
+    <string name="title_kanji_detail_example">Ví dụ</string>
+    <string name="title_practice">Ôn tập</string>
     <string name="title_favorite">Yêu thích</string>
     <string name="title_grammar">Ngữ pháp</string>
     <string name="title_test_grammar">Ngữ pháp</string>

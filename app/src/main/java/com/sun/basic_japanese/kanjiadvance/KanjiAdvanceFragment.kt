@@ -7,14 +7,17 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ScrollView
 import com.sun.basic_japanese.R
 import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.FragmentInteractionListener
 import com.sun.basic_japanese.data.model.KanjiAdvance
+import com.sun.basic_japanese.data.model.KanjiAdvanceMessage
 import com.sun.basic_japanese.data.repository.KanjiRepository
 import com.sun.basic_japanese.data.source.local.AppDatabase
 import com.sun.basic_japanese.data.source.local.KanjiLocalDataSource
 import com.sun.basic_japanese.data.source.remote.KanjiRemoteDataSource
+import com.sun.basic_japanese.kanjidetail.KanjiAdvanceDetailFragment
 import com.sun.basic_japanese.util.Constants
 import com.sun.basic_japanese.util.Extensions.showToast
 import com.sun.basic_japanese.widget.SelectLessonDialogFragment
@@ -49,6 +52,7 @@ class KanjiAdvanceFragment @SuppressLint("ValidFragment") private constructor() 
     private val selectDialog = SelectLessonDialogFragment.newInstance(Constants.KANJI_ADVANCE)
 
     private var listener: OnKanjiAdvanceFragmentInteractionListener? = null
+    private var kanjiAdvanceList = listOf<KanjiAdvance>()
     private var currentLesson = 1
 
     override fun onAttach(context: Context?) {
@@ -75,6 +79,7 @@ class KanjiAdvanceFragment @SuppressLint("ValidFragment") private constructor() 
 
     override fun showKanjiAdvanceData(kanjiAdvanceList: List<KanjiAdvance>) {
         kanjiBasicRecyclerAdapter.updateData(kanjiAdvanceList)
+        this.kanjiAdvanceList = kanjiAdvanceList
     }
 
     override fun showError(message: String) {
@@ -94,7 +99,11 @@ class KanjiAdvanceFragment @SuppressLint("ValidFragment") private constructor() 
     }
 
     override fun showKanjiAdvanceDetail(currentPosition: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        getNavigationManager().open(
+            KanjiAdvanceDetailFragment.newInstance(
+                KanjiAdvanceMessage(kanjiAdvanceList, currentPosition)
+            )
+        )
     }
 
     override fun showKanjiLesson(lesson: Int) {

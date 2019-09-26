@@ -6,4 +6,6 @@ interface FragmentInteractionListener {
     fun setToolbarVisibility(show: Boolean)
 
     fun setCurrentFragment(fragment: BaseFragment)
+
+    fun scroll(input: Int)
 }
