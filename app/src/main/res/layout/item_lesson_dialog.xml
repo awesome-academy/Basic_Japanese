@@ -35,6 +35,7 @@
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="@dimen/dp_8"
         android:layout_marginTop="@dimen/dp_8"
+        android:gravity="center_vertical"
         android:textColor="@color/color_accent"
         android:textSize="@dimen/sp_16"
         app:layout_constraintStart_toEndOf="@+id/textPersonNameJapanese"
@@ -45,6 +46,7 @@
         android:layout_width="@dimen/dp_320"
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="@dimen/dp_8"
+        android:gravity="center_vertical"
         android:textColor="@color/color_text_primary"
         android:textSize="@dimen/sp_16"
         app:layout_constraintBottom_toTopOf="@+id/textDialogVietnamese"
@@ -57,6 +59,7 @@
         android:layout_height="@dimen/dp_40"
         android:layout_marginStart="@dimen/dp_8"
         android:layout_marginBottom="@dimen/dp_8"
+        android:gravity="center_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textPersonNameInternational" />
 

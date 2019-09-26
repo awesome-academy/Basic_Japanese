@@ -1,5 +1,6 @@
 package com.sun.basic_japanese.jlpttest.examdetail
 
+import android.app.Dialog
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
@@ -12,6 +13,7 @@ import com.sun.basic_japanese.constants.BasicJapaneseConstants.TEST_CATEGORY
 import com.sun.basic_japanese.data.model.JLPTTest
 import com.sun.basic_japanese.data.source.remote.JLPTTestRemoteDataSource
 import com.sun.basic_japanese.util.Constants.CHARACTER_SPLIT_1
+import kotlinx.android.synthetic.main.dialog_exam_result.*
 import kotlinx.android.synthetic.main.fragment_jlpt_question.*
 
 class JLPTQuestionFragment : BaseFragment(), JLPTQuestionContract.View {
@@ -22,6 +24,8 @@ class JLPTQuestionFragment : BaseFragment(), JLPTQuestionContract.View {
     private var jLPTExam: List<JLPTTest>? = null
     private var currentQuestion = START_QUESTION
     private var pickedAnswer = 0
+    private var correctedAnswersNumber = 0
+    private var totalQuestions = 0
 
     private val jLPTRemote by lazy {
         JLPTTestRemoteDataSource.getInstance()
@@ -45,6 +49,7 @@ class JLPTQuestionFragment : BaseFragment(), JLPTQuestionContract.View {
 
     override fun showJLPTData(jLPTExam: List<JLPTTest>) {
         this.jLPTExam = jLPTExam
+        totalQuestions = jLPTExam.size
         displayQuestion(jLPTExam[0])
     }
 
@@ -70,7 +75,7 @@ class JLPTQuestionFragment : BaseFragment(), JLPTQuestionContract.View {
                 ANSWER_3 -> textAnswer3?.background = wrongAnswerBackground
                 ANSWER_4 -> textAnswer4?.background = wrongAnswerBackground
             }
-        }
+        } else correctedAnswersNumber++
     }
 
     private fun displayQuestion(question: JLPTTest) {
@@ -117,7 +122,19 @@ class JLPTQuestionFragment : BaseFragment(), JLPTQuestionContract.View {
     }
 
     private fun finishExam() {
-        TODO()
+        context?.let {
+            val resultDialog = Dialog(it).apply {
+                setContentView(R.layout.dialog_exam_result)
+                setCanceledOnTouchOutside(true)
+                setTitle(R.string.title_jlpt_test)
+                textTotalQuestion?.text = jLPTExam?.size.toString()
+                textCorrectedAnswers?.text = correctedAnswersNumber.toString()
+                textWrongAnswers?.text = (totalQuestions - correctedAnswersNumber).toString()
+                textMark?.text = (TOTAL_MARK * correctedAnswersNumber / totalQuestions).toString()
+                show()
+
+            }
+        }
     }
 
     private fun evaluate(answerNumber: Int) {
@@ -154,6 +171,7 @@ class JLPTQuestionFragment : BaseFragment(), JLPTQuestionContract.View {
         private const val ANSWER_2 = 1
         private const val ANSWER_3 = 2
         private const val ANSWER_4 = 3
+        private const val TOTAL_MARK = 100
 
         private const val START_QUESTION = 0
 
