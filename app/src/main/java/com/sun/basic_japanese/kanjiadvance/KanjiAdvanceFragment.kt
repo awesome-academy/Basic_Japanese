@@ -147,9 +147,9 @@ class KanjiAdvanceFragment @SuppressLint("ValidFragment") private constructor() 
             resources.getString(R.string.title_favorite)
         else "${resources.getString(R.string.title_lesson)} $lesson"
         buttonLessonPrevious.visibility =
-            if (lesson > Constants.KANJI_ADVANCE_MIN_LESSON) View.VISIBLE else View.GONE
+            if (lesson > Constants.KANJI_ADVANCE_MIN_LESSON) View.VISIBLE else View.INVISIBLE
         buttonLessonNext.visibility =
-            if (lesson < Constants.KANJI_ADVANCE_MAX_LESSON) View.VISIBLE else View.GONE
+            if (lesson < Constants.KANJI_ADVANCE_MAX_LESSON) View.VISIBLE else View.INVISIBLE
     }
 
     interface OnKanjiAdvanceFragmentInteractionListener : FragmentInteractionListener

@@ -51,6 +51,7 @@ class KanjiAdvanceDetailFragment @SuppressLint("ValidFragment") private construc
 
     private var listener: OnKanjiDetailFragmentInteractionListener? = null
     private var currentIndex = 1
+    private var count = 0
     private var currentKanji: KanjiAdvance? = null
 
     override fun onAttach(context: Context?) {
@@ -72,6 +73,7 @@ class KanjiAdvanceDetailFragment @SuppressLint("ValidFragment") private construc
         super.onViewCreated(view, savedInstanceState)
         message?.let {
             initView()
+            count = kanjiAdvanceList?.size ?: 0
             showKanjiDetail(it.currentPosition)
         }
     }
@@ -106,7 +108,6 @@ class KanjiAdvanceDetailFragment @SuppressLint("ValidFragment") private construc
     }
 
     private fun initView() {
-        listener?.setToolbarTitle(resources.getString(R.string.title_kanji_advance))
         titleRemember?.visibility = View.GONE
         imageKanjiRemember?.visibility = View.GONE
         textKanjiRemember?.visibility = View.GONE
@@ -134,9 +135,9 @@ class KanjiAdvanceDetailFragment @SuppressLint("ValidFragment") private construc
         setDetailKanji()
 
         buttonLessonPrevious.visibility =
-            if (currentIndex > 0) View.VISIBLE else View.GONE
+            if (currentIndex > 0) View.VISIBLE else View.INVISIBLE
         buttonLessonNext.visibility =
-            if (currentIndex < 100) View.VISIBLE else View.GONE
+            if (currentIndex < count - 1) View.VISIBLE else View.INVISIBLE
     }
 
     private fun setDetailKanji() {

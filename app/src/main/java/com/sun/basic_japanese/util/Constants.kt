@@ -29,4 +29,5 @@ object Constants {
     const val LOAD_KANJI_BASIC_DATA = "load_kanji_basic_data"
     const val LOAD_KANJI_ADVANCE_DATA = "load_kanji_advance_data"
     const val LOAD_JLPT_TEST_DATA = "load_jlpt_test_data"
+    const val MIN_QUERY_SEARCH = 2
 }

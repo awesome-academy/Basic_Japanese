@@ -113,6 +113,13 @@ class KanjiLocalDataSource private constructor(
         }, callback).execute(input)
     }
 
+    override fun searchKanji(query: String, callback: OnDataLoadedCallback<KanjiAdvanceResponse>) {
+        LoadDataAsync(object : LocalDataHandler<String, KanjiAdvanceResponse> {
+            override fun execute(vararg params: String): KanjiAdvanceResponse =
+                KanjiAdvanceResponse(database.searchKanji(params[0]))
+        }, callback).execute(query)
+    }
+
     companion object {
 
         @Volatile

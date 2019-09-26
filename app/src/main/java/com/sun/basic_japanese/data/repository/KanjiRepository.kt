@@ -85,6 +85,10 @@ class KanjiRepository private constructor(
         localDataSource.getStrokeOrder(input, callback)
     }
 
+    override fun searchKanji(query: String, callback: OnDataLoadedCallback<KanjiAdvanceResponse>) {
+        localDataSource.searchKanji(query, callback)
+    }
+
     override fun getKanjiBasicRemote(
         lesson: String,
         callback: OnDataLoadedCallback<KanjiBasicResponse>
