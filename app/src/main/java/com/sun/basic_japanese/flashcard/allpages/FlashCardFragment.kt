@@ -55,10 +55,8 @@ class FlashCardFragment : BaseFragment(), FlashCardContract.View {
             flashCardFragments.add(FlashCardPageFragment.newInstance(flashCard))
         }
 
-        fragmentManager?.let {
-            viewPagerFlashCard?.adapter = FlashCardPagerAdapter(it, flashCardFragments)
-            viewPagerFlashCard?.currentItem = currentPosition
-        }
+        viewPagerFlashCard?.adapter = FlashCardPagerAdapter(childFragmentManager, flashCardFragments)
+        viewPagerFlashCard?.currentItem = currentPosition
     }
 
     companion object {

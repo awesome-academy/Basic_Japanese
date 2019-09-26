@@ -53,12 +53,15 @@ class FlashCardPageFragment : Fragment(), FlashCardPageContract.View {
     }
 
     override fun setupAudioPlayer(alphabetAudio: AlphabetAudioResponse) {
-        audioPlayer.setDataSource(
-            alphabetAudio.audioDescriptor.fileDescriptor,
-            alphabetAudio.audioDescriptor.startOffset,
-            alphabetAudio.audioDescriptor.length
-        )
-        audioPlayer.prepare()
+        audioPlayer.apply {
+            reset()
+            setDataSource(
+                alphabetAudio.audioDescriptor.fileDescriptor,
+                alphabetAudio.audioDescriptor.startOffset,
+                alphabetAudio.audioDescriptor.length
+            )
+            prepare()
+        }
     }
 
     private fun initPresenter() {
@@ -94,7 +97,6 @@ class FlashCardPageFragment : Fragment(), FlashCardPageContract.View {
             }
             context?.let {
                 animatedViewJapanese.loadSVGFile(AppDatabase.getInstance(it).getStrokeOrder(type))
-                animatedViewJapanese.startDrawAnimation(FLASHCARD_ANIMATION_DELAY)
             }
         }
     }
