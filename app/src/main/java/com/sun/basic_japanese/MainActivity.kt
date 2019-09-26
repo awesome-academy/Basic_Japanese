@@ -7,6 +7,7 @@ import com.sun.basic_japanese.base.BaseFragment
 import com.sun.basic_japanese.base.HasNavigationManager
 import com.sun.basic_japanese.base.NavigationManager
 import com.sun.basic_japanese.home.HomeFragment
+import com.sun.basic_japanese.kanjidetail.KanjiBasicDetailFragment
 import com.sun.basic_japanese.kanjiadvance.KanjiAdvanceFragment
 import com.sun.basic_japanese.kanjibasic.KanjiBasicFragment
 import com.sun.basic_japanese.kanjidetail.KanjiAdvanceDetailFragment
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity(),
     HomeFragment.OnHomeFragmentInteractionListener,
     KanjiBasicFragment.OnKanjiBasicFragmentInteractionListener,
     KanjiAdvanceFragment.OnKanjiAdvanceFragmentInteractionListener,
+    KanjiBasicDetailFragment.OnKanjiBasicDetailFragmentInteractionListener,
     KanjiAdvanceDetailFragment.OnKanjiDetailFragmentInteractionListener,
     HasNavigationManager {
 

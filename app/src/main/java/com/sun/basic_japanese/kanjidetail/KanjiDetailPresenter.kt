@@ -22,6 +22,19 @@ class KanjiDetailPresenter(
         })
     }
 
+    override fun updateFavoriteKanjiBasic(kanjiBasic: KanjiBasic) {
+        kanjiRepository.updateFavoriteKanjiBasic(
+            kanjiBasic,
+            object : OnDataLoadedCallback<Boolean> {
+                override fun onSuccess(data: Boolean) {
+                }
+
+                override fun onFailed(exception: Exception) {
+                    kanjiBasicView.showError(exception.message.toString())
+                }
+            })
+    }
+
     override fun updateFavoriteKanjiAdvance(kanjiAdvance: KanjiAdvance) {
         kanjiRepository.updateFavoriteKanjiAdvance(
             kanjiAdvance,
