@@ -2,12 +2,13 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="oval">
-            <solid android:color="@color/color_accent" />
+            <solid android:color="@color/color_background" />
             <size
                 android:width="48dp"
                 android:height="48dp" />
         </shape>
     </item>
+    <item android:drawable="@drawable/fragment_background" />
     <item
         android:drawable="@drawable/ic_navigate_next_black_24dp"
         android:gravity="center" />
