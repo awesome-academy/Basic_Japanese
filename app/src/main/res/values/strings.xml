@@ -2,7 +2,7 @@
     <string name="app_name">Basic Japanese</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="title_home">Ứng dụng học tiếng nhật</string>
+    <string name="title_home">Basic Japanese</string>
     <string name="title_search">Tìm kiếm kanji</string>
     <string name="title_search_count">từ được tìm thấy cho từ khóa</string>
     <string name="title_search_error">Bạn phải nhập ít nhất 2 kí tự</string>

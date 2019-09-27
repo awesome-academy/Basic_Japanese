@@ -11,19 +11,19 @@ import com.sun.basic_japanese.constants.BasicJapaneseConstants.THUMBNAILS_PATH
 class AssetManager(private val context: Context) {
     fun getAlphabetAudio(audioFileName: String): AssetFileDescriptor {
         val assetsManager = context.assets
-        return assetsManager.openFd(ALPHABET_AUDIO_PATH + audioFileName)
+        return assetsManager.openFd("$ALPHABET_AUDIO_PATH/$audioFileName")
     }
 
     fun getLessonThumbnail(imageFileName: String): Drawable {
         val assetsManager = context.assets
         return Drawable.createFromStream(
-            assetsManager.open(THUMBNAILS_PATH + imageFileName), null
+            assetsManager.open("$THUMBNAILS_PATH/$imageFileName"), null
         )
     }
 
     fun getLessonAudio(audioFileName: String): AssetFileDescriptor {
         val assetsManager = context.assets
-        return assetsManager.openFd(LESSON_AUDIO_PATH + audioFileName)
+        return assetsManager.openFd("$LESSON_AUDIO_PATH/$audioFileName")
     }
 
     companion object {

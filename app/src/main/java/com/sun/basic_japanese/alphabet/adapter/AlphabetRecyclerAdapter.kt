@@ -36,16 +36,19 @@ class AlphabetRecyclerAdapter(
         itemView: View,
         private val listener: RecyclerViewItemClickListener
     ) : RecyclerView.ViewHolder(itemView) {
-
+        private var itemData: Alphabet? = null
         private val context = itemView.context
         private val textWordLabel: TextView? = itemView.textAlphabetJapanese
         private val textWordDescription: TextView? = itemView.textAlphabetInternational
 
         init {
-            setClickEvent()
+            itemView.setOnClickListener {
+                itemData?.let { setClickEvent(it.id - 1) }
+            }
         }
 
         fun bindData(alphabet: Alphabet?, alphabetType: String?) {
+            itemData = alphabet
             context?.let {
                 val wordBackgroundColor =
                     ContextCompat.getColor(context, R.color.color_background)
@@ -75,10 +78,8 @@ class AlphabetRecyclerAdapter(
             textWordDescription?.setBackgroundColor(color)
         }
 
-        private fun setClickEvent() {
-            itemView.setOnClickListener {
-                listener.onRecyclerViewItemClick(adapterPosition)
-            }
+        private fun setClickEvent(currentPosition: Int) {
+            listener.onRecyclerViewItemClick(currentPosition)
         }
     }
 }
