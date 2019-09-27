@@ -123,7 +123,7 @@ class AppDatabase private constructor(
         val assetsManager = context.assets
         return assetsManager.list(THUMBNAILS_PATH)?.map {
             Drawable.createFromStream(
-                assetsManager.open(THUMBNAILS_PATH + it), null
+                assetsManager.open("$THUMBNAILS_PATH/$it"), null
             )
         }
     }

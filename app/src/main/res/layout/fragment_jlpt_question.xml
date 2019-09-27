@@ -28,16 +28,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textQuestionNumber" />
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
     <TextView
         android:id="@+id/textAnswer1"
         android:layout_width="@dimen/dp_164"
         android:layout_height="@dimen/dp_96"
-        android:layout_marginStart="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_32"
         android:background="@drawable/fragment_background"
         android:gravity="center"
         android:textColor="@color/color_text_primary"
         android:textSize="@dimen/sp_18"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textQuestionDetail" />
 
@@ -46,38 +53,39 @@
         android:layout_width="@dimen/dp_164"
         android:layout_height="@dimen/dp_96"
         android:layout_marginTop="@dimen/dp_32"
-        android:layout_marginEnd="@dimen/dp_24"
         android:background="@drawable/fragment_background"
         android:gravity="center"
         android:textColor="@color/color_text_primary"
         android:textSize="@dimen/sp_18"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textQuestionDetail" />
 
     <TextView
         android:id="@+id/textAnswer3"
         android:layout_width="@dimen/dp_164"
         android:layout_height="@dimen/dp_96"
-        android:layout_marginStart="@dimen/dp_24"
         android:layout_marginTop="@dimen/dp_32"
         android:background="@drawable/fragment_background"
         android:gravity="center"
         android:textColor="@color/color_text_primary"
         android:textSize="@dimen/sp_18"
+        app:layout_constraintEnd_toStartOf="@id/guideline"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textAnswer1" />
 
     <TextView
         android:id="@+id/textAnswer4"
+
         android:layout_width="@dimen/dp_164"
         android:layout_height="@dimen/dp_96"
         android:layout_marginTop="@dimen/dp_32"
-        android:layout_marginEnd="@dimen/dp_24"
         android:background="@drawable/fragment_background"
         android:gravity="center"
         android:textColor="@color/color_text_primary"
         android:textSize="@dimen/sp_18"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textAnswer2" />
 
     <Button

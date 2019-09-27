@@ -113,7 +113,8 @@ class AudioLessonDetailFragment :
         view.apply {
             textLessonTitle?.text = audioLesson?.title
             textLessonDescription?.text = audioLesson?.detail
-            textLessonGrammar?.text = audioLesson?.grammar
+            textLessonGrammar?.text =
+                audioLesson?.grammar?.replace("\\n", System.getProperty("line.separator"))
         }
     }
 

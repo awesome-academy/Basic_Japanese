@@ -13,9 +13,9 @@ object BasicJapaneseConstants {
     const val FLASHCARD_ANIMATION_DELAY = 500L
     const val REMEMBERED = 1
     const val FORGOTTEN = 0
-    const val THUMBNAILS_PATH = "lessonthumbnails/"
-    const val ALPHABET_AUDIO_PATH = "alphabetsaudio/"
-    const val LESSON_AUDIO_PATH = "lessonsaudio/"
+    const val THUMBNAILS_PATH = "lessonthumbnails"
+    const val ALPHABET_AUDIO_PATH = "alphabetsaudio"
+    const val LESSON_AUDIO_PATH = "lessonsaudio"
     const val AUDIO_LESSONS_COLUMN_NUMBER = 2
     const val TEST_CATEGORY = "category"
 }
