@@ -48,6 +48,11 @@ class FlashCardPageFragment : Fragment(), FlashCardPageContract.View {
         setEventClick()
     }
 
+    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
+        super.setUserVisibleHint(isVisibleToUser)
+        if (isVisibleToUser && isResumed) startWordAnimation()
+    }
+
     override fun showAlphabetRememberChanged() {
         setWordRememberStatus()
     }
@@ -72,6 +77,10 @@ class FlashCardPageFragment : Fragment(), FlashCardPageContract.View {
                 AlphabetLocalAsset.getInstance(AssetManager.getInstance(it))
             flashCardPresenter = FlashCardPagePresenter(this, alphabetRepository, alphabetAssetDataSource)
         }
+    }
+
+    private fun startWordAnimation() {
+        animatedViewJapanese.startDrawAnimation(FLASHCARD_ANIMATION_DELAY)
     }
 
     private fun showFlashCard() {
@@ -112,7 +121,7 @@ class FlashCardPageFragment : Fragment(), FlashCardPageContract.View {
             }
         }
         animatedViewJapanese.setOnClickListener {
-            animatedViewJapanese.startDrawAnimation(FLASHCARD_ANIMATION_DELAY)
+            startWordAnimation()
         }
     }
 

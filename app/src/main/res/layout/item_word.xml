@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/textAlphabetJapanese"
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/dp_64"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textColor="@color/color_text_primary"
-        android:textSize="@dimen/sp_24"
+        android:textSize="@dimen/sp_32"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

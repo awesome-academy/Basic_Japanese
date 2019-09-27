@@ -57,12 +57,10 @@ class AudioLessonDetailFragment :
         setEventClick()
     }
 
-    override fun onBackPressed(): Boolean {
-        if (lessonAudioPlayer.isPlaying) {
-            lessonAudioPlayer.stop()
-        }
+    override fun onDestroyView() {
+        lessonAudioPlayer.stop()
         lessonAudioPlayer.reset()
-        return super.onBackPressed()
+        super.onDestroyView()
     }
 
     override fun showDialogueData(dialogues: List<Dialogue>) {
