@@ -29,6 +29,8 @@ interface KanjiDataSource {
         fun updateTagKanjiAdvance(kanjiAdvance: KanjiAdvance, callback: OnDataLoadedCallback<Boolean>)
 
         fun getStrokeOrder(input: String, callback: OnDataLoadedCallback<String>)
+
+        fun searchKanji(query: String, callback: OnDataLoadedCallback<KanjiAdvanceResponse>)
     }
 
     interface Remote {

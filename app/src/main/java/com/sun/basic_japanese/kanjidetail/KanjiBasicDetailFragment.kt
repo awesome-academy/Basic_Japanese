@@ -53,6 +53,7 @@ class KanjiBasicDetailFragment @SuppressLint("ValidFragment") private constructo
 
     private var listener: OnKanjiBasicDetailFragmentInteractionListener? = null
     private var currentIndex = 1
+    private var count = 0
     private var currentKanji: KanjiBasic? = null
 
     override fun onAttach(context: Context?) {
@@ -74,6 +75,7 @@ class KanjiBasicDetailFragment @SuppressLint("ValidFragment") private constructo
         super.onViewCreated(view, savedInstanceState)
         message?.let {
             initView()
+            count = kanjiBasicList?.size ?: 0
             showKanjiDetail(it.currentPosition)
         }
     }
@@ -132,9 +134,9 @@ class KanjiBasicDetailFragment @SuppressLint("ValidFragment") private constructo
         setDetailKanji()
 
         buttonLessonPrevious.visibility =
-            if (currentIndex > 0) View.VISIBLE else View.GONE
+            if (currentIndex > 0) View.VISIBLE else View.INVISIBLE
         buttonLessonNext.visibility =
-            if (currentIndex < 100) View.VISIBLE else View.GONE
+            if (currentIndex < count - 1) View.VISIBLE else View.INVISIBLE
     }
 
     private fun setDetailKanji() {

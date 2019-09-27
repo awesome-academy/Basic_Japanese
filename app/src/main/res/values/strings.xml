@@ -2,6 +2,10 @@
     <string name="app_name">Basic Japanese</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_home">Ứng dụng học tiếng nhật</string>
+    <string name="title_search">Tìm kiếm kanji</string>
+    <string name="title_search_count">từ được tìm thấy cho từ khóa</string>
+    <string name="title_search_error">Bạn phải nhập ít nhất 2 kí tự</string>
     <string name="title_alphabet">Bảng chữ cái</string>
     <string name="title_audio_learning">Học tiếng nhật NHK</string>
     <string name="title_kanji_basic">Kanji cơ bản</string>
@@ -21,7 +25,7 @@
     <string name="title_select_dialog">Lựa chọn bài học</string>
     <string name="title_lesson">Bài</string>
     <string name="title_kanji_detail_remember">Ghi nhớ</string>
-    <string name="title_kanji_detail_china_mean">Am hán</string>
+    <string name="title_kanji_detail_china_mean">Âm hán</string>
     <string name="title_kanji_detail_viet_mean">Nghĩa</string>
     <string name="title_kanji_detail_onjomi">Onjomi</string>
     <string name="title_kanji_detail_kunjomi">Kunjomi</string>

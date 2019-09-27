@@ -393,6 +393,38 @@ class AppDatabase private constructor(
         return result != -1
     }
 
+    fun searchKanji(query: String): List<KanjiAdvance> {
+        val kanjiList = mutableListOf<KanjiAdvance>()
+        val keyWord = "%$query%"
+        val db = readableDatabase
+        val cursor = db.query(
+            DATABASE_TABLE_KANJI_ADVANCE,
+            null,
+            "${KanjiAdvance.JSON_KEY_WORD} LIKE ? " +
+                    "OR ${KanjiAdvance.JSON_KEY_CHINA_MEAN} LIKE ? " +
+                    "OR ${KanjiAdvance.JSON_KEY_VIET_MEAN} LIKE ? " +
+                    "OR ${KanjiAdvance.JSON_KEY_ROMAJI_ONJOMI} LIKE ?" +
+                    "OR ${KanjiAdvance.JSON_KEY_ROMAJI_KUNJOMI} LIKE ?",
+            arrayOf(keyWord, keyWord, keyWord, keyWord, keyWord),
+            null,
+            null,
+            null,
+            LIMIT_100
+        )
+
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                val kanjiAdvance = KanjiAdvance(cursor)
+                kanjiList.add(kanjiAdvance)
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+
+        return kanjiList
+    }
+
     fun getJLPTTestLocal(category: String): List<JLPTTest> {
         val jlptTests = mutableListOf<JLPTTest>()
 
@@ -541,6 +573,7 @@ class AppDatabase private constructor(
         private const val HEXA_DECIMAL = 16
         private const val FRIST_CHAR_INDEX = 0
         private const val LIMIT_1 = "1"
+        private const val LIMIT_100 = "100"
 
         @SuppressLint("StaticFieldLeak")
         @Volatile
